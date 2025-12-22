@@ -1,17 +1,6 @@
-@import "tailwindcss";
-
 :root {
   --background: rgb(246, 233, 217);
-  --foreground: rgb(4, 50, 34)
-}
-
-/* stylelint-disable-next-line unknownAtRules */
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-clash-display: var(--font-clash-display);
-  --font-sans: var(--font-clash-display);
-  --font-mono: var(--font-clash-display);
+  --foreground: rgb(4, 50, 34);
 }
 
 @media (prefers-color-scheme: dark) {
