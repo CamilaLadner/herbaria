@@ -1,9 +1,11 @@
 import React from 'react'
+import Navbar from './components/layout/navbar'
+
 
 const page = () => {
   return (
     <div>
-      <h1>Herbaria - Tu elección</h1>
+      <Navbar />
     </div>
   )
 }

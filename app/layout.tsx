@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import ThemeScript from "./components/ThemeScript";
 
 // Configuración para ClashDisplay
 const clashDisplay = localFont({
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${clashDisplay.variable} ${clashDisplay.className}`}
       >
+        <ThemeScript />
         {children}
       </body>
     </html>
