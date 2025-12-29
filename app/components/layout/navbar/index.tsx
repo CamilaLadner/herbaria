@@ -60,7 +60,7 @@ const index = () => {
     <div className={styles.navbar}>
 
       <div className={styles.logo}>
-        <img src="logoNavbar.png" alt="logo" />
+        <img src="/logoNavBar.png" alt="logo" />
       </div>
 
       <div className={styles.menu}>
