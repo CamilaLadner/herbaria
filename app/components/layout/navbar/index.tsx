@@ -3,20 +3,34 @@
 import { useState, useEffect } from 'react';
 import styles from './index.module.css';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 const index = () => {
-  const [iconState, setIconState] = useState<'sunrise' | 'sunset'>(() => {
+  // Inicializar siempre con 'sunrise' para evitar error de hidratación
+  const [iconState, setIconState] = useState<'sunrise' | 'sunset'>('sunrise');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Inicializar el tema desde localStorage solo después del mount
+  useEffect(() => {
+    setMounted(true);
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
-      return savedTheme === 'dark' ? 'sunset' : 'sunrise';
+      const htmlElement = document.documentElement;
+      if (savedTheme === 'dark') {
+        setIconState('sunset');
+        htmlElement.classList.add('dark');
+      } else {
+        setIconState('sunrise');
+        htmlElement.classList.remove('dark');
+      }
     }
-    return 'sunrise';
-  });
+  }, []);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  // Actualizar el tema cuando cambia iconState (solo después del mount)
   useEffect(() => {
+    if (!mounted) return;
     const htmlElement = document.documentElement;
     if (iconState === 'sunset') {
       htmlElement.classList.add('dark');
@@ -25,7 +39,7 @@ const index = () => {
       htmlElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
-  }, [iconState]);
+  }, [iconState, mounted]);
 
   const handleIconClick = () => {
     if (iconState === 'sunrise') {
@@ -65,12 +79,14 @@ const index = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>
-        <img 
+        <Image 
           src={iconState === 'sunset' ? "/logoDesktopDark.png" : "/logoNavBar.png"} 
           alt="logo" 
+          width={100}
+          height={100}
           className={styles.logoDesktop} 
         />
-        <img src="/logoMobile.png" alt="logo" className={styles.logoMobile} />
+        <Image src="/logoMobile.png" alt="logo" className={styles.logoMobile} width={100} height={100} />
       </div>
 
       <button 

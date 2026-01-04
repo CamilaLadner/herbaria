@@ -10,7 +10,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     border: none;
-    background-color: var(--foreground);
+    background-color: #2e6417;
     color: var(--background);
 }
 
