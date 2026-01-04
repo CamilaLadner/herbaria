@@ -1,10 +1,10 @@
 :root {
-  --background: rgb(246, 233, 217);
+  --background: rgb(247, 238, 227);
   --foreground: rgb(4, 50, 34);
 }
 
 :root.dark {
-  --background: rgb(4, 50, 34);
+  --background: rgb(26, 48, 5);
   --foreground: rgb(246, 233, 217);
 }
 
