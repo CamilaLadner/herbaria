@@ -1,0 +1,31 @@
+.button {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: var(--font-clash-display);
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    border: none;
+    background-color: var(--foreground);
+    color: var(--background);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+/* Modo oscuro */
+:global(.dark) .button {
+    background-color: rgb(246, 219, 187);
+    color: var(--background);
+}
+
