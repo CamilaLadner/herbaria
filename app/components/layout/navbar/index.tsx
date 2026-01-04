@@ -65,7 +65,11 @@ const index = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>
-        <img src="/logoNavBar.png" alt="logo" className={styles.logoDesktop} />
+        <img 
+          src={iconState === 'sunset' ? "/logoDesktopDark.png" : "/logoNavBar.png"} 
+          alt="logo" 
+          className={styles.logoDesktop} 
+        />
         <img src="/logoMobile.png" alt="logo" className={styles.logoMobile} />
       </div>
 
