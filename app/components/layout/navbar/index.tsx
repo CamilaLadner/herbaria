@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 
-const index = () => {
+const Navbar = () => {
   // Inicializar siempre con 'sunrise' para evitar error de hidratación
   const [iconState, setIconState] = useState<'sunrise' | 'sunset'>('sunrise');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -121,4 +121,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Navbar

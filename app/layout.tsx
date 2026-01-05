@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import ThemeScript from "./components/ThemeScript";
+import Navbar from "./components/layout/navbar";
 
 // Configuración para ClashDisplay
 const clashDisplay = localFont({
@@ -27,7 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <Navbar />
       <body
         className={`${clashDisplay.variable} ${clashDisplay.className}`}
       >

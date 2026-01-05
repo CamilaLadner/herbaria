@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    gap: 40px;
+}
+
+.title {
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Responsive para mobile */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 16px;
+        gap: 30px;
+    }
+
+    .cardsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
