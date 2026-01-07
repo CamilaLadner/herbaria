@@ -18,7 +18,7 @@ const Principal = () => {
             key={seccion.nombre}
             titulo={seccion.nombre}
             descripcion={seccion.descripcion}
-            imagen={getImagen(seccion.nombre)}
+            imagen={seccion.imagen || getImagen(seccion.nombre)}
             alt={seccion.nombre}
           />
         ))}

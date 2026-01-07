@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface Planta {
   id: string;
   nombreProfesional: string;
@@ -21,6 +23,8 @@ export interface CategoriaPlantas {
 export interface SeccionPlantas {
   nombre: string;
   descripcion: string;
+  imagen: string;
+  alt: string;
   categorias: CategoriaPlantas[];
 }
 
@@ -318,8 +322,10 @@ const getPlantaById = (id: string): Planta => {
 // Secciones de plantas
 export const seccionesPlantas: SeccionPlantas[] = [
   {
-    nombre: 'POR ESPACIO',
+    nombre: 'POR AMBIENTE',
     descripcion: 'Encuentra plantas ideales para cada rincón de tu hogar',
+    imagen: '/porAmbiente.jpg',
+    alt: 'sección por ambiente',
     categorias: [
       {
         nombre: 'Interior',
@@ -410,6 +416,8 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'POR NIVEL DE CUIDADO',
     descripcion: 'Elige según tu experiencia y tiempo disponible',
+    imagen: '/porCuidado.jpg',
+    alt: 'sección por nivel de cuidado',
     categorias: [
       {
         nombre: 'Muy fácil',
@@ -451,6 +459,8 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'POR LUZ',
     descripcion: 'Selecciona según la iluminación de tu espacio',
+    imagen: '/porLuz.jpg',
+    alt: 'sección por nivel de luz',
     categorias: [
       {
         nombre: 'Mucha luz natural',
@@ -493,6 +503,8 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'POR USO - FUNCIÓN',
     descripcion: 'Plantas que cumplen funciones específicas',
+    imagen: '/porFuncion.jpg',
+    alt: 'sección por uso - función',
     categorias: [
       {
         nombre: 'Decorativa',
@@ -561,6 +573,8 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'POR SENSACIÓN - EMOCIÓN',
     descripcion: 'Descubre plantas que transmiten emociones',
+    imagen: '/porEmocion.jpg',
+    alt: 'sección por sensación - emoción',
     categorias: [
       {
         nombre: 'Calma',
@@ -638,6 +652,8 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'POR TAMAÑO',
     descripcion: 'Encuentra la planta perfecta según el espacio disponible',
+    imagen: '/porTamanio.jpg',
+    alt: 'sección por tamaño',
     categorias: [
       {
         nombre: 'Pequeña',
@@ -679,6 +695,8 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'PET FRIENDLY',
     descripcion: 'Plantas seguras para convivir con tus mascotas',
+    imagen: '/petFriendly.jpg',
+    alt: 'sección pet friendly',
     categorias: [
       {
         nombre: 'Apta para mascotas',

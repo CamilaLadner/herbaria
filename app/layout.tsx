@@ -29,11 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Navbar />
       <body
         className={`${clashDisplay.variable} ${clashDisplay.className}`}
       >
         <ThemeScript />
+        <Navbar />
         {children}
       </body>
     </html>
