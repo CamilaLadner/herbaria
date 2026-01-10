@@ -13,6 +13,7 @@ export interface Planta {
   petFriendly: boolean;
   descripcion: string;
   caracteristicas: string[];
+  imagen: string;
 }
 
 export interface CategoriaPlantas {
@@ -42,7 +43,8 @@ const plantasBase: Planta[] = [
     luz: 'Poca luz',
     petFriendly: false,
     descripcion: 'Planta muy resistente que purifica el aire eliminando toxinas',
-    caracteristicas: ['Resistente a sequía', 'Bajo mantenimiento', 'Ideal para principiantes']
+    caracteristicas: ['Resistente a sequía', 'Bajo mantenimiento', 'Ideal para principiantes'],
+    imagen: '/plants/LenguaDeSuegra.jpg'
   },
   {
     id: '2',
@@ -56,12 +58,13 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: false,
     descripcion: 'Planta trepadora que crece rápidamente y purifica el ambiente',
-    caracteristicas: ['Crecimiento rápido', 'Fácil propagación', 'Trepadora']
+    caracteristicas: ['Crecimiento rápido', 'Fácil propagación', 'Trepadora'],
+    imagen: '/plants/potus.jpg'
   },
   {
     id: '3',
     nombreProfesional: 'Aloe vera',
-    nombreCotidiano: 'Sábila',
+    nombreCotidiano: 'Aloe vera o sábila',
     color: 'Verde grisáceo',
     tamano: 'Mediana',
     uso: ['Medicinal (uso tradicional)', 'Purificadora de aire'],
@@ -70,7 +73,8 @@ const plantasBase: Planta[] = [
     luz: 'Mucha luz natural',
     petFriendly: false,
     descripcion: 'Planta medicinal con propiedades curativas para la piel',
-    caracteristicas: ['Gel curativo', 'Resistente', 'Propiedades antiinflamatorias']
+    caracteristicas: ['Gel curativo', 'Resistente', 'Propiedades antiinflamatorias'],
+    imagen: '/plants/aloeVera.jpg'
   },
   {
     id: '4',
@@ -84,7 +88,8 @@ const plantasBase: Planta[] = [
     luz: 'Mucha luz natural',
     petFriendly: true,
     descripcion: 'Planta aromática que promueve la relajación y el sueño',
-    caracteristicas: ['Aroma relajante', 'Repelente natural', 'Flores decorativas']
+    caracteristicas: ['Aroma relajante', 'Repelente natural', 'Flores decorativas'],
+    imagen: '/plants/Lavanda.jpg'
   },
   {
     id: '5',
@@ -98,7 +103,8 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: true,
     descripcion: 'Hierba aromática ideal para cocina y té',
-    caracteristicas: ['Crecimiento rápido', 'Aroma refrescante', 'Uso culinario']
+    caracteristicas: ['Crecimiento rápido', 'Aroma refrescante', 'Uso culinario'],
+    imagen: '/plants/menta.jpg'
   },
   {
     id: '6',
@@ -112,7 +118,8 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: true,
     descripcion: 'Planta colgante que elimina formaldehído del aire',
-    caracteristicas: ['Colgante', 'Propagación fácil', 'Muy resistente']
+    caracteristicas: ['Colgante', 'Propagación fácil', 'Muy resistente'],
+    imagen: '/plants/cinta.jpg'
   },
   {
     id: '7',
@@ -126,7 +133,8 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: false,
     descripcion: 'Árbol de interior con hojas grandes y elegantes',
-    caracteristicas: ['Hojas grandes', 'Elegante', 'Requiere espacio']
+    caracteristicas: ['Hojas grandes', 'Elegante', 'Requiere espacio'],
+    imagen: '/plants/ficusLira.jpg'
   },
   {
     id: '8',
@@ -140,7 +148,8 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: false,
     descripcion: 'Planta tropical con hojas perforadas características',
-    caracteristicas: ['Hojas únicas', 'Crecimiento vertical', 'Tropical']
+    caracteristicas: ['Hojas únicas', 'Crecimiento vertical', 'Tropical'],
+    imagen: '/plants/costillaDeAdan.jpg'
   },
   {
     id: '9',
@@ -154,7 +163,8 @@ const plantasBase: Planta[] = [
     luz: 'Mucha luz natural',
     petFriendly: true,
     descripcion: 'Hierba aromática que mejora la memoria y concentración',
-    caracteristicas: ['Aroma intenso', 'Uso culinario', 'Propiedades estimulantes']
+    caracteristicas: ['Aroma intenso', 'Uso culinario', 'Propiedades estimulantes'],
+    imagen: '/plants/romero.jpg'
   },
   {
     id: '10',
@@ -168,7 +178,8 @@ const plantasBase: Planta[] = [
     luz: 'Poca luz',
     petFriendly: false,
     descripcion: 'Planta que florece y purifica el aire eficientemente',
-    caracteristicas: ['Flores blancas', 'Bajo mantenimiento', 'Purificadora']
+    caracteristicas: ['Flores blancas', 'Bajo mantenimiento', 'Purificadora'],
+    imagen: '/plants/Espatifilo.jpg'
   },
   {
     id: '11',
@@ -182,7 +193,8 @@ const plantasBase: Planta[] = [
     luz: 'Mucha luz natural',
     petFriendly: false,
     descripcion: 'Suculenta que simboliza prosperidad y buena suerte',
-    caracteristicas: ['Suculenta', 'Resistente', 'Larga duración']
+    caracteristicas: ['Suculenta', 'Resistente', 'Larga duración'],
+    imagen: '/plants/arbolDeJade.jpg'
   },
   {
     id: '12',
@@ -196,7 +208,8 @@ const plantasBase: Planta[] = [
     luz: 'Mucha luz natural',
     petFriendly: true,
     descripcion: 'Hierba culinaria esencial con aroma característico',
-    caracteristicas: ['Uso culinario', 'Aroma intenso', 'Crecimiento rápido']
+    caracteristicas: ['Uso culinario', 'Aroma intenso', 'Crecimiento rápido'],
+    imagen: '/plants/albahaca.jpg'
   },
   {
     id: '13',
@@ -210,7 +223,8 @@ const plantasBase: Planta[] = [
     luz: 'Poca luz',
     petFriendly: false,
     descripcion: 'Planta extremadamente resistente, casi indestructible',
-    caracteristicas: ['Muy resistente', 'Bajo mantenimiento', 'Ideal para oficinas']
+    caracteristicas: ['Muy resistente', 'Bajo mantenimiento', 'Ideal para oficinas'],
+    imagen: '/plants/Zamioculca.jpg'
   },
   {
     id: '14',
@@ -224,7 +238,8 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: true,
     descripcion: 'Planta con hojas coloridas que añade vida a cualquier espacio',
-    caracteristicas: ['Hojas coloridas', 'Fácil cuidado', 'Versátil']
+    caracteristicas: ['Hojas coloridas', 'Fácil cuidado', 'Versátil'],
+    imagen: '/plants/Coleo.jpg'
   },
   {
     id: '15',
@@ -238,7 +253,8 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: true,
     descripcion: 'Planta con hojas decorativas que se mueven durante el día',
-    caracteristicas: ['Hojas decorativas', 'Movimiento diurno', 'Humedad alta']
+    caracteristicas: ['Hojas decorativas', 'Movimiento diurno', 'Humedad alta'],
+    imagen: '/plants/Calathea.jpg'
   },
   {
     id: '16',
@@ -252,7 +268,8 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: true,
     descripcion: 'Árbol ornamental que simboliza prosperidad y buena fortuna',
-    caracteristicas: ['Tronco trenzado', 'Simbólico', 'Fácil cuidado']
+    caracteristicas: ['Tronco trenzado', 'Simbólico', 'Fácil cuidado'],
+    imagen: '/plants/arbolDelDinero.jpg'
   },
   {
     id: '17',
@@ -266,7 +283,8 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: false,
     descripcion: 'Planta vertical que purifica el aire y añade altura al espacio',
-    caracteristicas: ['Crecimiento vertical', 'Purificadora', 'Elegante']
+    caracteristicas: ['Crecimiento vertical', 'Purificadora', 'Elegante'],
+    imagen: '/plants/Dracaena.jpg'
   },
   {
     id: '18',
@@ -280,7 +298,8 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: true,
     descripcion: 'Planta compacta ideal para espacios pequeños',
-    caracteristicas: ['Compacta', 'Fácil cuidado', 'Ideal para escritorios']
+    caracteristicas: ['Compacta', 'Fácil cuidado', 'Ideal para escritorios'],
+    imagen: '/plants/Peperomia_.jpg'
   },
   {
     id: '19',
@@ -294,13 +313,14 @@ const plantasBase: Planta[] = [
     luz: 'Luz media',
     petFriendly: false,
     descripcion: 'Planta trepadora que purifica el aire eficientemente',
-    caracteristicas: ['Trepadora', 'Purificadora', 'Versátil']
+    caracteristicas: ['Trepadora', 'Purificadora', 'Versátil'],
+    imagen: '/plants/hiedra.jpg'
   },
   {
     id: '20',
     nombreProfesional: 'Philodendron hederaceum',
     nombreCotidiano: 'Filodendro',
-    color: 'Verde brillante',
+    color: 'Verde brillante y rosa',
     tamano: 'Mediana',
     uso: ['Purificadora de aire', 'Decorativa'],
     sensacion: ['Vitalidad', 'Natural'],
@@ -308,7 +328,8 @@ const plantasBase: Planta[] = [
     luz: 'Poca luz',
     petFriendly: false,
     descripcion: 'Planta trepadora muy fácil de cuidar',
-    caracteristicas: ['Muy resistente', 'Trepadora', 'Bajo mantenimiento']
+    caracteristicas: ['Muy resistente', 'Trepadora', 'Bajo mantenimiento'],
+    imagen: '/plants/Filodendro.jpg'
   }
 ];
 
@@ -392,7 +413,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
       {
         nombre: 'Cocina',
         plantas: [
-          getPlantaById('3'), // Sábila
+          getPlantaById('3'), // aloe vera
           getPlantaById('5'), // Menta
           getPlantaById('9'), // Romero
           getPlantaById('12'), // Albahaca
@@ -434,7 +455,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
       {
         nombre: 'Fácil',
         plantas: [
-          getPlantaById('3'), // Sábila
+          getPlantaById('3'), // aloe vera
           getPlantaById('5'), // Menta
           getPlantaById('8'), // Costilla de Adán
           getPlantaById('9'), // Romero
@@ -465,7 +486,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
       {
         nombre: 'Mucha luz natural',
         plantas: [
-          getPlantaById('3'), // Sábila
+          getPlantaById('3'), // aloe vera
           getPlantaById('4'), // Lavanda
           getPlantaById('7'), // Ficus lira
           getPlantaById('9'), // Romero
@@ -538,7 +559,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
       {
         nombre: 'Medicinal (uso tradicional)',
         plantas: [
-          getPlantaById('3'), // Sábila
+          getPlantaById('3'), // aloe vera
           getPlantaById('4'), // Lavanda
           getPlantaById('5'), // Menta
           getPlantaById('9') // Romero
@@ -549,7 +570,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
         plantas: [
           getPlantaById('1'), // Lengua de suegra
           getPlantaById('2'), // Potus
-          getPlantaById('3'), // Sábila
+          getPlantaById('3'), // aloe vera
           getPlantaById('6'), // Cinta
           getPlantaById('7'), // Ficus lira
           getPlantaById('8'), // Costilla de Adán
@@ -580,7 +601,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
         nombre: 'Calma',
         plantas: [
           getPlantaById('1'), // Lengua de suegra
-          getPlantaById('3'), // Sábila
+          getPlantaById('3'), // aloe vera
           getPlantaById('4'), // Lavanda
           getPlantaById('10'), // Espatifilo
           getPlantaById('15') // Calathea
@@ -628,7 +649,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
       {
         nombre: 'Natural',
         plantas: [
-          getPlantaById('3'), // Sábila
+          getPlantaById('3'), // aloe vera
           getPlantaById('6'), // Cinta
           getPlantaById('8'), // Costilla de Adán
           getPlantaById('15'), // Calathea
@@ -669,7 +690,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
         plantas: [
           getPlantaById('1'), // Lengua de suegra
           getPlantaById('2'), // Potus
-          getPlantaById('3'), // Sábila
+          getPlantaById('3'), // aloe vera
           getPlantaById('4'), // Lavanda
           getPlantaById('9'), // Romero
           getPlantaById('10'), // Espatifilo

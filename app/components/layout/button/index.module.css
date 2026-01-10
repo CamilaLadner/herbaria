@@ -12,6 +12,11 @@
     border: none;
     background-color: #2e6417;
     color: var(--background);
+    width: auto;
+}
+
+.button:focus {
+    outline: none;
 }
 
 .button:hover {
