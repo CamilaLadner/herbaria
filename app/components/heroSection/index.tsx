@@ -1,9 +1,17 @@
-import React from 'react'
+'use client'
+
 import Image from 'next/image'
 import styles from './index.module.css'
-import Button from '../layout/button'
+import buttonStyles from '../layout/button/index.module.css'
 
 const HeroSection = () => {
+  const handleScrollToSection = () => {
+    const element = document.getElementById('como-elegir')
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <div className={styles.background}>
       <Image
@@ -17,7 +25,9 @@ const HeroSection = () => {
         <h2> Plantas pensadas para mejorar tus espacios según la vida que quieras crear</h2>
         <h3>Acompañamos decisiones cotidianas a través de las plantas </h3>
 
-        <Button text="Elegí tu planta ideal" href="/nuestros-productos" />
+        <button onClick={handleScrollToSection} className={buttonStyles.button}>
+          Elegí tu planta ideal
+        </button>
       </div>
     </div>
   )

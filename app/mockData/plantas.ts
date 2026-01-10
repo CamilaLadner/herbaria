@@ -416,7 +416,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'POR NIVEL DE CUIDADO',
     descripcion: 'Elige según tu experiencia y tiempo disponible',
-    imagen: '/porCuidado.jpg',
+    imagen: '/porCuidado1.jpg',
     alt: 'sección por nivel de cuidado',
     categorias: [
       {
@@ -459,7 +459,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'POR LUZ',
     descripcion: 'Selecciona según la iluminación de tu espacio',
-    imagen: '/porLuz.jpg',
+    imagen: '/porLuz1.jpg',
     alt: 'sección por nivel de luz',
     categorias: [
       {
@@ -573,7 +573,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'POR SENSACIÓN - EMOCIÓN',
     descripcion: 'Descubre plantas que transmiten emociones',
-    imagen: '/porEmocion.jpg',
+    imagen: '/porSensacion.jpg',
     alt: 'sección por sensación - emoción',
     categorias: [
       {
@@ -652,7 +652,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'POR TAMAÑO',
     descripcion: 'Encuentra la planta perfecta según el espacio disponible',
-    imagen: '/porTamanio.jpg',
+    imagen: '/porTamanio2.jpg',
     alt: 'sección por tamaño',
     categorias: [
       {
@@ -695,7 +695,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
   {
     nombre: 'PET FRIENDLY',
     descripcion: 'Plantas seguras para convivir con tus mascotas',
-    imagen: '/petFriendly.jpg',
+    imagen: '/petFriendly1.jpg',
     alt: 'sección pet friendly',
     categorias: [
       {
@@ -710,22 +710,6 @@ export const seccionesPlantas: SeccionPlantas[] = [
           getPlantaById('15'), // Calathea
           getPlantaById('16'), // Árbol del dinero
           getPlantaById('18') // Peperomia
-        ]
-      },
-      {
-        nombre: 'No apta para mascotas',
-        plantas: [
-          getPlantaById('1'), // Lengua de suegra
-          getPlantaById('2'), // Potus
-          getPlantaById('3'), // Sábila
-          getPlantaById('7'), // Ficus lira
-          getPlantaById('8'), // Costilla de Adán
-          getPlantaById('10'), // Espatifilo
-          getPlantaById('11'), // Árbol de jade
-          getPlantaById('13'), // Zamioculca
-          getPlantaById('17'), // Dracaena
-          getPlantaById('19'), // Hiedra
-          getPlantaById('20') // Filodendro
         ]
       }
     ]

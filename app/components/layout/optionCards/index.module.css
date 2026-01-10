@@ -3,16 +3,16 @@
     flex-direction: column;
     border-radius: 12px;
     overflow: hidden;
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: rgb(247, 238, 227);
+    color: #2e6417;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .imageContainer {
@@ -42,7 +42,7 @@
     font-size: 20px;
     font-weight: 600;
     margin: 0;
-    color: var(--foreground);
+    color: #2e6417;
 }
 
 .descripcion {
@@ -50,17 +50,17 @@
     font-size: 14px;
     line-height: 1.5;
     margin: 0;
-    color: var(--foreground);
+    color: #2e6417;
     opacity: 0.8;
 }
 
-/* Modo oscuro */
+/* Modo oscuro - box-shadow claro */
 :global(.dark) .card {
-    box-shadow: 0 2px 8px rgba(246, 233, 217, 0.1);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 :global(.dark) .card:hover {
-    box-shadow: 0 4px 16px rgba(246, 233, 217, 0.2);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
 }
 
 /* Responsive para mobile */
