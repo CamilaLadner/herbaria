@@ -56,7 +56,7 @@ const HowToChoose = () => {
               />
             ))}
             <OptionCard
-              titulo="Recomendación del día"
+              titulo="Recomendación aleatoria"
               descripcion="Si no sabés por dónde empezar, esta es una buena opción."
               imagen="/Random.jpeg"
               alt="Recomendación del día"

@@ -97,17 +97,17 @@ const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>
-        <Image 
-          src={iconState === 'sunset' ? "/logoDesktopDark.png" : "/logoNavBar.png"} 
-          alt="logo" 
+        <Image
+          src={iconState === 'sunset' ? "/logoDesktopDark.png" : "/logoNavBar.png"}
+          alt="logo"
           width={100}
           height={100}
-          className={styles.logoDesktop} 
+          className={styles.logoDesktop}
         />
         <Image src="/logoMobile.png" alt="logo" className={styles.logoMobile} width={100} height={100} />
       </div>
 
-      <button 
+      <button
         className={`${styles.hamburger} ${isMenuOpen ? styles.hamburgerOpen : ''}`}
         onClick={toggleMenu}
         aria-label="Toggle menu"
@@ -127,7 +127,6 @@ const Navbar = () => {
       <div className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ''}`}>
         <button onClick={handleScrollToAbout} className={styles.menuLink}>Sobre nosotros</button>
         <Link href="/nuestros-productos" onClick={() => setIsMenuOpen(false)}>Nuestros productos</Link>
-        <Link href="/contacto" onClick={() => setIsMenuOpen(false)}>Contacto</Link>
         <div className={styles.menuButtons}>
           <div onClick={handleIconClick}>
             {renderIcon()}
