@@ -53,6 +53,14 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleScrollToAbout = () => {
+    const element = document.getElementById('sobre-nosotros');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setIsMenuOpen(false);
+  };
+
   const CartIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
@@ -117,7 +125,7 @@ const Navbar = () => {
       </div>
 
       <div className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ''}`}>
-        <Link href="/sobre-nosotros" onClick={() => setIsMenuOpen(false)}>Sobre nosotros</Link>
+        <button onClick={handleScrollToAbout} className={styles.menuLink}>Sobre nosotros</button>
         <Link href="/nuestros-productos" onClick={() => setIsMenuOpen(false)}>Nuestros productos</Link>
         <Link href="/contacto" onClick={() => setIsMenuOpen(false)}>Contacto</Link>
         <div className={styles.menuButtons}>

@@ -6,7 +6,7 @@ import OptionCard from '../layout/optionCards'
 import Modal from '../layout/modal'
 import { seccionesPlantas, plantasBase, Planta } from '../../mockData/plantas'
 
-const Principal = () => {
+const HowToChoose = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [plantaRecomendada, setPlantaRecomendada] = useState<Planta | null>(null)
 
@@ -75,4 +75,4 @@ const Principal = () => {
   )
 }
 
-export default Principal
+export default HowToChoose

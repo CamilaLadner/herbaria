@@ -32,7 +32,7 @@
 
 .menu {
     display: flex;
-    justify-content: center;
+    justify-content: center;    
     gap: 2rem;
     flex: 1;
     position: absolute;
@@ -47,6 +47,22 @@
     a:hover {
         transform: translateY(-2px);
     }
+}
+
+.menuLink {
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    padding: 0;
+    transition: transform 0.1s ease;
+}
+
+.menuLink:hover {
+    transform: translateY(-2px);
 }
 
 .menuButtons {
@@ -127,6 +143,9 @@
         visibility: hidden;
         transition: all 0.3s ease;
         z-index: 9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     :global(.dark) .menu {
