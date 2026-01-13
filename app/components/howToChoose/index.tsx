@@ -1,14 +1,32 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import styles from './index.module.css'
 import OptionCard from '../layout/optionCards'
 import Modal from '../layout/modal'
 import { seccionesPlantas, plantasBase, Planta } from '../../mockData/plantas'
 
 const HowToChoose = () => {
+  const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [plantaRecomendada, setPlantaRecomendada] = useState<Planta | null>(null)
+
+  // Función para convertir el nombre de la sección a una URL slug
+  const construirURL = (nombreSeccion: string): string => {
+    return nombreSeccion
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Eliminar acentos
+      .replace(/\s+/g, '-') // Reemplazar espacios con guiones
+      .replace(/[^a-z0-9-]/g, '') // Eliminar caracteres especiales
+  }
+
+  // Handler para navegar a la sección
+  const handleSeccionClick = (nombreSeccion: string) => {
+    const url = `/${construirURL(nombreSeccion)}`
+    router.push(url)
+  }
 
   // Función para obtener una imagen placeholder (puedes reemplazar con imágenes reales)
   const getImagen = (seccionNombre: string): string => {
@@ -53,6 +71,7 @@ const HowToChoose = () => {
               descripcion={seccion.descripcion}
               imagen={seccion.imagen || getImagen(seccion.nombre)}
               alt={seccion.nombre}
+              onClick={() => handleSeccionClick(seccion.nombre)}
               />
             ))}
             <OptionCard

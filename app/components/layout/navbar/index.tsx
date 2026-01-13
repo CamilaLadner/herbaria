@@ -1,12 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from './index.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const router = useRouter();
   // Inicializar siempre con 'sunrise' para evitar error de hidratación
   const [iconState, setIconState] = useState<'sunrise' | 'sunset'>('sunrise');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,11 +57,25 @@ const Navbar = () => {
   };
 
   const handleScrollToAbout = () => {
-    const element = document.getElementById('sobre-nosotros');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
     setIsMenuOpen(false);
+    
+    // Si estamos en la página principal, hacer scroll
+    if (pathname === '/') {
+      const element = document.getElementById('sobre-nosotros');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      // Si estamos en otra página, navegar a la página principal con hash
+      router.push('/#sobre-nosotros');
+      // Esperar a que la página se cargue y luego hacer scroll
+      setTimeout(() => {
+        const element = document.getElementById('sobre-nosotros');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
   };
 
   const CartIcon = () => (
@@ -96,7 +113,7 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
-      <div className={styles.logo}>
+      <Link href="/" className={styles.logo}>
         <Image
           src={iconState === 'sunset' ? "/logoDesktopDark.png" : "/logoNavBar.png"}
           alt="logo"
@@ -105,7 +122,7 @@ const Navbar = () => {
           className={styles.logoDesktop}
         />
         <Image src="/logoMobile.png" alt="logo" className={styles.logoMobile} width={100} height={100} />
-      </div>
+      </Link>
 
       <button
         className={`${styles.hamburger} ${isMenuOpen ? styles.hamburgerOpen : ''}`}

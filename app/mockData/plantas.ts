@@ -14,6 +14,7 @@ export interface Planta {
   descripcion: string;
   caracteristicas: string[];
   imagen: string;
+  precio: number;
 }
 
 export interface CategoriaPlantas {
@@ -44,7 +45,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Planta muy resistente que purifica el aire eliminando toxinas',
     caracteristicas: ['Resistente a sequía', 'Bajo mantenimiento', 'Ideal para principiantes'],
-    imagen: '/plants/LenguaDeSuegra.jpg'
+    imagen: '/plants/LenguaDeSuegra.jpg',
+    precio: 4500
   },
   {
     id: '2',
@@ -59,7 +61,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Planta trepadora que crece rápidamente y purifica el ambiente',
     caracteristicas: ['Crecimiento rápido', 'Fácil propagación', 'Trepadora'],
-    imagen: '/plants/potus.jpg'
+    imagen: '/plants/potus.jpg',
+    precio: 3500
   },
   {
     id: '3',
@@ -74,7 +77,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Planta medicinal con propiedades curativas para la piel',
     caracteristicas: ['Gel curativo', 'Resistente', 'Propiedades antiinflamatorias'],
-    imagen: '/plants/aloeVera.jpg'
+    imagen: '/plants/aloeVera.jpg',
+    precio: 4200
   },
   {
     id: '4',
@@ -89,7 +93,8 @@ const plantasBase: Planta[] = [
     petFriendly: true,
     descripcion: 'Planta aromática que promueve la relajación y el sueño',
     caracteristicas: ['Aroma relajante', 'Repelente natural', 'Flores decorativas'],
-    imagen: '/plants/Lavanda.jpg'
+    imagen: '/plants/Lavanda.jpg',
+    precio: 4800
   },
   {
     id: '5',
@@ -104,7 +109,8 @@ const plantasBase: Planta[] = [
     petFriendly: true,
     descripcion: 'Hierba aromática ideal para cocina y té',
     caracteristicas: ['Crecimiento rápido', 'Aroma refrescante', 'Uso culinario'],
-    imagen: '/plants/menta.jpg'
+    imagen: '/plants/menta.jpg',
+    precio: 2500
   },
   {
     id: '6',
@@ -119,7 +125,8 @@ const plantasBase: Planta[] = [
     petFriendly: true,
     descripcion: 'Planta colgante que elimina formaldehído del aire',
     caracteristicas: ['Colgante', 'Propagación fácil', 'Muy resistente'],
-    imagen: '/plants/cinta.jpg'
+    imagen: '/plants/cinta.jpg',
+    precio: 2800
   },
   {
     id: '7',
@@ -134,7 +141,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Árbol de interior con hojas grandes y elegantes',
     caracteristicas: ['Hojas grandes', 'Elegante', 'Requiere espacio'],
-    imagen: '/plants/ficusLira.jpg'
+    imagen: '/plants/ficusLira.jpg',
+    precio: 12000
   },
   {
     id: '8',
@@ -149,7 +157,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Planta tropical con hojas perforadas características',
     caracteristicas: ['Hojas únicas', 'Crecimiento vertical', 'Tropical'],
-    imagen: '/plants/costillaDeAdan.jpg'
+    imagen: '/plants/costillaDeAdan.jpg',
+    precio: 15000
   },
   {
     id: '9',
@@ -164,7 +173,8 @@ const plantasBase: Planta[] = [
     petFriendly: true,
     descripcion: 'Hierba aromática que mejora la memoria y concentración',
     caracteristicas: ['Aroma intenso', 'Uso culinario', 'Propiedades estimulantes'],
-    imagen: '/plants/romero.jpg'
+    imagen: '/plants/romero.jpg',
+    precio: 3200
   },
   {
     id: '10',
@@ -179,7 +189,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Planta que florece y purifica el aire eficientemente',
     caracteristicas: ['Flores blancas', 'Bajo mantenimiento', 'Purificadora'],
-    imagen: '/plants/Espatifilo.jpg'
+    imagen: '/plants/Espatifilo.jpg',
+    precio: 5200
   },
   {
     id: '11',
@@ -194,7 +205,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Suculenta que simboliza prosperidad y buena suerte',
     caracteristicas: ['Suculenta', 'Resistente', 'Larga duración'],
-    imagen: '/plants/arbolDeJade.jpg'
+    imagen: '/plants/arbolDeJade.jpg',
+    precio: 3800
   },
   {
     id: '12',
@@ -209,7 +221,8 @@ const plantasBase: Planta[] = [
     petFriendly: true,
     descripcion: 'Hierba culinaria esencial con aroma característico',
     caracteristicas: ['Uso culinario', 'Aroma intenso', 'Crecimiento rápido'],
-    imagen: '/plants/albahaca.jpg'
+    imagen: '/plants/albahaca.jpg',
+    precio: 2200
   },
   {
     id: '13',
@@ -224,7 +237,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Planta extremadamente resistente, casi indestructible',
     caracteristicas: ['Muy resistente', 'Bajo mantenimiento', 'Ideal para oficinas'],
-    imagen: '/plants/Zamioculca.jpg'
+    imagen: '/plants/Zamioculca.jpg',
+    precio: 5500
   },
   {
     id: '14',
@@ -239,7 +253,8 @@ const plantasBase: Planta[] = [
     petFriendly: true,
     descripcion: 'Planta con hojas coloridas que añade vida a cualquier espacio',
     caracteristicas: ['Hojas coloridas', 'Fácil cuidado', 'Versátil'],
-    imagen: '/plants/Coleo.jpg'
+    imagen: '/plants/Coleo.jpg',
+    precio: 3400
   },
   {
     id: '15',
@@ -254,7 +269,8 @@ const plantasBase: Planta[] = [
     petFriendly: true,
     descripcion: 'Planta con hojas decorativas que se mueven durante el día',
     caracteristicas: ['Hojas decorativas', 'Movimiento diurno', 'Humedad alta'],
-    imagen: '/plants/Calathea.jpg'
+    imagen: '/plants/Calathea.jpg',
+    precio: 6800
   },
   {
     id: '16',
@@ -269,7 +285,8 @@ const plantasBase: Planta[] = [
     petFriendly: true,
     descripcion: 'Árbol ornamental que simboliza prosperidad y buena fortuna',
     caracteristicas: ['Tronco trenzado', 'Simbólico', 'Fácil cuidado'],
-    imagen: '/plants/arbolDelDinero.jpg'
+    imagen: '/plants/arbolDelDinero.jpg',
+    precio: 11000
   },
   {
     id: '17',
@@ -284,7 +301,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Planta vertical que purifica el aire y añade altura al espacio',
     caracteristicas: ['Crecimiento vertical', 'Purificadora', 'Elegante'],
-    imagen: '/plants/Dracaena.jpg'
+    imagen: '/plants/Dracaena.jpg',
+    precio: 13000
   },
   {
     id: '18',
@@ -299,7 +317,8 @@ const plantasBase: Planta[] = [
     petFriendly: true,
     descripcion: 'Planta compacta ideal para espacios pequeños',
     caracteristicas: ['Compacta', 'Fácil cuidado', 'Ideal para escritorios'],
-    imagen: '/plants/Peperomia_.jpg'
+    imagen: '/plants/Peperomia_.jpg',
+    precio: 2900
   },
   {
     id: '19',
@@ -314,7 +333,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Planta trepadora que purifica el aire eficientemente',
     caracteristicas: ['Trepadora', 'Purificadora', 'Versátil'],
-    imagen: '/plants/hiedra.jpg'
+    imagen: '/plants/hiedra.jpg',
+    precio: 4000
   },
   {
     id: '20',
@@ -329,7 +349,8 @@ const plantasBase: Planta[] = [
     petFriendly: false,
     descripcion: 'Planta trepadora muy fácil de cuidar',
     caracteristicas: ['Muy resistente', 'Trepadora', 'Bajo mantenimiento'],
-    imagen: '/plants/Filodendro.jpg'
+    imagen: '/plants/Filodendro.jpg',
+    precio: 4600
   }
 ];
 

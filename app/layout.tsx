@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ThemeScript from "./components/ThemeScript";
 import Navbar from "./components/layout/navbar";
+import Footer from "./components/layout/footer";
 
 // Configuración para ClashDisplay
 const clashDisplay = localFont({
@@ -35,6 +36,7 @@ export default function RootLayout({
         <ThemeScript />
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
