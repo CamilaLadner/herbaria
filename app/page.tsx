@@ -3,6 +3,7 @@ import Separator from './components/layout/separator'
 import HowToChoose from './components/howToChoose'
 import NuestroProyecto from './components/aboutUs'
 import Propaganda from './components/propaganda'
+import Footer from './components/layout/footer'
 
 const page = () => {
   return (
@@ -13,6 +14,7 @@ const page = () => {
       <NuestroProyecto />
       <Propaganda />
       <Separator leftText="Si vas a dar amor" rightText="que tenga raíces" />
+      <Footer />
     </div>
   )
 }

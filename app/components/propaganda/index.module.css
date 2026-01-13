@@ -9,7 +9,7 @@
     align-items: center;
     margin: 0 auto;
     margin-bottom: 30px;
-    }
+}
 
 
 /* Sombra para modo oscuro */
@@ -18,21 +18,21 @@
 }
 
 
-    .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-    }
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 
-    .details {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        font-size: 14px;
-    }
+.details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
 
 @media (max-width: 768px) {
     .container {
