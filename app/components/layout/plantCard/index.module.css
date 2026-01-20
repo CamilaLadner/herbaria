@@ -9,6 +9,7 @@
   max-width: 500px;
   height: 100%;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -62,17 +63,6 @@
   line-height: 1.6;
   color: var(--foreground);
   margin: 0;
-}
-
-.buttonContainer {
-  margin-top: auto;
-  display: flex;
-  justify-content: center;
-  padding-top: 8px;
-}
-
-.viewProductButton {
-  width: 100%;
 }
 
 /* Modo oscuro */

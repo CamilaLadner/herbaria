@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import { Planta } from '../../../mockData/plantas'
-import Button from '../button'
 import styles from './index.module.css'
 
 interface PlantCardProps {
@@ -25,7 +24,7 @@ const PlantCard: React.FC<PlantCardProps> = ({ planta, onViewProduct }) => {
   }
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={handleViewProduct} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && handleViewProduct()}>
       <div className={styles.imageContainer}>
         <Image
           src={planta.imagen}
@@ -43,13 +42,6 @@ const PlantCard: React.FC<PlantCardProps> = ({ planta, onViewProduct }) => {
         </div>
 
         <p className={styles.descripcion}>{planta.descripcion}</p>
-
-        <div className={styles.buttonContainer}>
-          <Button
-            text="Ver producto"
-            onClick={handleViewProduct}
-          />
-        </div>
       </div>
     </div>
   )
