@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    align-items: center;
     gap: 20px;
 }
 
@@ -10,6 +9,12 @@
     padding: 40px 20px;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.guideText {
+    text-align: center;
+    color: var(--foreground);
+    padding: 2rem;
 }
 
 .title {
@@ -91,8 +96,8 @@
     }
 
     .plantsRow {
-        grid-template-columns: 1fr;
-        gap: 24px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
 }
 

@@ -26,6 +26,7 @@ export interface SeccionPlantas {
   nombre: string;
   descripcion: string;
   imagen: string;
+  imagenSlug?: string;
   alt: string;
   categorias: CategoriaPlantas[];
 }
@@ -367,6 +368,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
     nombre: 'POR AMBIENTE',
     descripcion: 'Encuentra plantas ideales para cada rincón de tu hogar',
     imagen: '/porAmbiente.jpg',
+    imagenSlug: '/imagenSlug/porAmbienteSlug.jpg',
     alt: 'sección por ambiente',
     categorias: [
       {
@@ -459,6 +461,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
     nombre: 'POR NIVEL DE CUIDADO',
     descripcion: 'Elige según tu experiencia y tiempo disponible',
     imagen: '/porCuidado1.jpg',
+    imagenSlug: '/imagenSlug/porCuidadoSlug.jpg',
     alt: 'sección por nivel de cuidado',
     categorias: [
       {
@@ -502,6 +505,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
     nombre: 'POR LUZ',
     descripcion: 'Selecciona según la iluminación de tu espacio',
     imagen: '/porLuz1.jpg',
+    imagenSlug: '/imagenSlug/porLuzSlug.jpg',
     alt: 'sección por nivel de luz',
     categorias: [
       {
@@ -546,6 +550,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
     nombre: 'POR USO - FUNCIÓN',
     descripcion: 'Plantas que cumplen funciones específicas',
     imagen: '/porFuncion.jpg',
+    imagenSlug: '/imagenSlug/porUsoSlug.jpg',
     alt: 'sección por uso - función',
     categorias: [
       {
@@ -616,6 +621,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
     nombre: 'POR SENSACIÓN - EMOCIÓN',
     descripcion: 'Descubre plantas que transmiten emociones',
     imagen: '/porSensacion.jpg',
+    imagenSlug: '/imagenSlug/porSensacionSlug.jpg',
     alt: 'sección por sensación - emoción',
     categorias: [
       {
@@ -695,6 +701,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
     nombre: 'POR TAMAÑO',
     descripcion: 'Encuentra la planta perfecta según el espacio disponible',
     imagen: '/porTamanio2.jpg',
+    imagenSlug: '/imagenSlug/porTamanioSlug.jpg',
     alt: 'sección por tamaño',
     categorias: [
       {
@@ -738,6 +745,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
     nombre: 'PET FRIENDLY',
     descripcion: 'Plantas seguras para convivir con tus mascotas',
     imagen: '/petFriendly1.jpg',
+    imagenSlug: '/imagenSlug/petFriendlySlug1.png',
     alt: 'sección pet friendly',
     categorias: [
       {

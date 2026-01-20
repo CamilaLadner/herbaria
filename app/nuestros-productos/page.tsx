@@ -6,8 +6,10 @@ import styles from './page.module.css'
 import { plantasBase, Planta } from '../mockData/plantas'
 import PlantCard from '../components/layout/plantCard'
 import Filters from '../components/layout/filters'
+import Modal from '../components/layout/modal'
 import Image from 'next/image'
 import Separator from '../components/layout/separator'
+import Propaganda from '../components/propaganda'
 
 const heroVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -20,10 +22,21 @@ const heroVariants = {
 
 const NuestrosProductos = () => {
   const [filteredPlantas, setFilteredPlantas] = useState<Planta[]>(plantasBase)
+  const [plantaSeleccionada, setPlantaSeleccionada] = useState<Planta | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const handleAddToCart = (planta: Planta) => {
-    // Lógica para añadir al carrito
-    console.log('Añadir al carrito:', planta)
+  const handleViewProduct = (planta: Planta) => {
+    setPlantaSeleccionada(planta)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setPlantaSeleccionada(null)
+  }
+
+  const handleComprar = () => {
+    // TODO: integrar con carrito
   }
 
   const handleFilterChange = useCallback((plantas: Planta[]) => {
@@ -32,12 +45,18 @@ const NuestrosProductos = () => {
 
   return (
     <>
+      <Modal
+        planta={plantaSeleccionada}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onComprar={handleComprar}
+      />
+
       <motion.div
         className={styles.hero}
-        initial="hidden"
+        initial={false}
         animate="visible"
         variants={{
-          hidden: { opacity: 0 },
           visible: {
             opacity: 1,
             transition: { staggerChildren: 0.2, delayChildren: 0.1 },
@@ -68,7 +87,7 @@ const NuestrosProductos = () => {
                   <PlantCard
                     key={planta.id}
                     planta={planta}
-                    onAddToCart={handleAddToCart}
+                    onViewProduct={handleViewProduct}
                   />
                 ))}
               </div>
@@ -77,6 +96,10 @@ const NuestrosProductos = () => {
                 <p>No se encontraron plantas con los filtros seleccionados.</p>
               </div>
             )}
+         <h3 className={styles.guideText}>Todos nuestros productos incluyen maceta y una guía de cuidado</h3> 
+
+            <Propaganda />
+
           </div>
         </div>
 
