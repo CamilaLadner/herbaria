@@ -48,7 +48,7 @@ const NuestrosProductos = () => {
           Plantar un jardín
         </motion.h1>
         <motion.div variants={heroVariants}>
-          <Image src="/ourProducts.png" alt="Nuestros Productos" width={400} height={600} className={styles.allPlantsImage} />
+          <Image src="/OurProducts.png" alt="Nuestros Productos" width={400} height={600} className={styles.allPlantsImage} />
         </motion.div>
         <motion.h1 className={styles.title} variants={heroVariants}>
           es creer en el mañana
