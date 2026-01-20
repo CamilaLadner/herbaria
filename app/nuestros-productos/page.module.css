@@ -1,3 +1,11 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 .container {
     padding: 40px 20px;
     max-width: 1400px;
@@ -5,28 +13,28 @@
 }
 
 .title {
-    font-family: var(--font-clash-display);
-    font-size: 32px;
-    font-weight: 600;
     text-align: center;
-    margin-bottom: 40px;
     color: var(--foreground);
+    padding: 8rem;
+}
+
+.allPlantsImage {
+    display: block;
+    margin: 0 auto;
 }
 
 .mainContent {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 32px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .filtersRow {
-    grid-column: 1;
-    grid-row: 1 / 4;
+    width: 100%;
 }
 
 .plantsSection {
-    grid-column: 2;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -34,7 +42,7 @@
 
 .plantsRow {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 32px;
     align-items: stretch;
 }
@@ -48,29 +56,38 @@
     opacity: 0.7;
 }
 
+/* Tablet: 2 columnas */
+@media (max-width: 1000px) {
+    .plantsRow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* Responsive para mobile */
 @media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        gap: 16px;
+        padding: 1rem 16px;
+    }
+
     .container {
         padding: 20px 16px;
     }
 
     .title {
         font-size: 24px;
-        margin-bottom: 24px;
+        margin-bottom: 0;
+        padding: 0.5rem 1rem;
+    }
+
+    .allPlantsImage {
+        max-width: 100%;
+        height: auto;
     }
 
     .mainContent {
-        grid-template-columns: 1fr;
         gap: 24px;
-    }
-
-    .filtersRow {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .plantsSection {
-        grid-column: 1;
     }
 
     .plantsRow {

@@ -1,0 +1,54 @@
+.metrics {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    gap: 1.5rem;
+}
+
+.metricsColumn {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.metricsItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    width: 12rem;
+    height: 8rem;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.metricsItem h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.metricsItem p {
+    margin: 0.25rem 0 0;
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+:global(.dark) .metricsItem {
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .metrics {
+        padding: 1rem;
+        gap: 1rem;
+        text-align: center;
+    }
+}

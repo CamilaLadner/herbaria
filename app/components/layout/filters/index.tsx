@@ -3,6 +3,7 @@
 import React from 'react'
 import { Planta, seccionesPlantas } from '../../../mockData/plantas'
 import { LuChevronDown, LuChevronRight } from 'react-icons/lu'
+import Button from '../button'
 import styles from './index.module.css'
 
 interface FiltersProps {
@@ -31,11 +32,35 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
     ambiente: false
   })
 
+  const filtersContainerRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    const hasOpen = Object.values(expandedSections).some(Boolean)
+    if (!hasOpen) return
+    const onMouseDown = (e: MouseEvent) => {
+      if (filtersContainerRef.current?.contains(e.target as Node)) return
+      setExpandedSections(prev =>
+        (Object.keys(prev) as (keyof typeof prev)[]).reduce(
+          (acc, k) => ({ ...acc, [k]: false }),
+          {} as typeof expandedSections
+        )
+      )
+    }
+    document.addEventListener('mousedown', onMouseDown)
+    return () => document.removeEventListener('mousedown', onMouseDown)
+  }, [expandedSections])
+
   const toggleSection = (section: keyof typeof expandedSections) => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [section]: !prev[section]
-    }))
+    setExpandedSections(prev => {
+      const isOpening = !prev[section]
+      if (isOpening) {
+        return (Object.keys(prev) as (keyof typeof expandedSections)[]).reduce(
+          (acc, k) => ({ ...acc, [k]: k === section }),
+          {} as typeof expandedSections
+        )
+      }
+      return { ...prev, [section]: false }
+    })
   }
 
   const filteredPlantas = React.useMemo(() => {
@@ -112,15 +137,16 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
   const ambientes = seccionAmbiente ? seccionAmbiente.categorias.map(c => c.nombre) : []
 
   return (
-    <div className={styles.filtersContainer}>
+    <div className={styles.filtersContainer} ref={filtersContainerRef}>
       <h3 className={styles.filtersTitle}>¿Cómo queres elegir?</h3>
-      
+
+      <div className={styles.filtersRow}>
       <div className={styles.filterSection}>
         <button 
           className={styles.filterHeader}
           onClick={() => toggleSection('tamano')}
         >
-          <h4 className={styles.filterLabel}>Tamaño</h4>
+          <h3 className={styles.filterLabel}>Tamaño</h3>
           {expandedSections.tamano ? (
             <LuChevronDown className={styles.chevronIcon} />
           ) : (
@@ -147,7 +173,7 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
           className={styles.filterHeader}
           onClick={() => toggleSection('cuidado')}
         >
-          <h4 className={styles.filterLabel}>Cuidado</h4>
+          <h3 className={styles.filterLabel}>Cuidado</h3>
           {expandedSections.cuidado ? (
             <LuChevronDown className={styles.chevronIcon} />
           ) : (
@@ -174,7 +200,7 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
           className={styles.filterHeader}
           onClick={() => toggleSection('luz')}
         >
-          <h4 className={styles.filterLabel}>Luz</h4>
+          <h3 className={styles.filterLabel}>Luz</h3>
           {expandedSections.luz ? (
             <LuChevronDown className={styles.chevronIcon} />
           ) : (
@@ -201,7 +227,7 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
           className={styles.filterHeader}
           onClick={() => toggleSection('petFriendly')}
         >
-          <h4 className={styles.filterLabel}>Pet Friendly</h4>
+          <h3 className={styles.filterLabel}>Pet Friendly</h3>
           {expandedSections.petFriendly ? (
             <LuChevronDown className={styles.chevronIcon} />
           ) : (
@@ -231,7 +257,7 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
           className={styles.filterHeader}
           onClick={() => toggleSection('uso')}
         >
-          <h4 className={styles.filterLabel}>Uso</h4>
+          <h3 className={styles.filterLabel}>Uso</h3>
           {expandedSections.uso ? (
             <LuChevronDown className={styles.chevronIcon} />
           ) : (
@@ -258,7 +284,7 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
           className={styles.filterHeader}
           onClick={() => toggleSection('sensacion')}
         >
-          <h4 className={styles.filterLabel}>Sensación</h4>
+          <h3 className={styles.filterLabel}>Sensación</h3>
           {expandedSections.sensacion ? (
             <LuChevronDown className={styles.chevronIcon} />
           ) : (
@@ -285,7 +311,7 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
           className={styles.filterHeader}
           onClick={() => toggleSection('ambiente')}
         >
-          <h4 className={styles.filterLabel}>Ambiente</h4>
+          <h3 className={styles.filterLabel}>Ambiente</h3>
           {expandedSections.ambiente ? (
             <LuChevronDown className={styles.chevronIcon} />
           ) : (
@@ -307,8 +333,10 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
         )}
       </div>
 
-      <button
-        className={styles.clearButton}
+      </div>
+
+      <Button
+        text="Limpiar filtros"
         onClick={() => setFilters({
           tamano: '',
           cuidado: '',
@@ -318,9 +346,7 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
           sensacion: '',
           ambiente: ''
         })}
-      >
-        Limpiar filtros
-      </button>
+      />
     </div>
   )
 }

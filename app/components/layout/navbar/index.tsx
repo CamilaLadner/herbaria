@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import styles from './index.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import AnnouncementBar from '../announcementBar';
 
 
 const Navbar = () => {
@@ -112,6 +113,8 @@ const Navbar = () => {
   };
 
   return (
+    <>
+      <AnnouncementBar />
     <div className={styles.navbar}>
       <Link href="/" className={styles.logo}>
         <Image
@@ -152,6 +155,7 @@ const Navbar = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

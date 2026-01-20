@@ -1,5 +1,8 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import styles from './index.module.css'
 
 interface SeparatorProps {
@@ -10,7 +13,15 @@ interface SeparatorProps {
 const Separator: React.FC<SeparatorProps> = ({ leftText, rightText }) => {
   return (
     <div className={styles.container}>
-      <p className={`${styles.text} ${styles.leftText}`}>{leftText}</p>
+      <motion.p
+        className={`${styles.text} ${styles.leftText}`}
+        initial={{ x: -80, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
+        {leftText}
+      </motion.p>
       <div className={styles.imageWrapper}>
         <Image
           src="/HTu eleccion.png"
@@ -20,7 +31,15 @@ const Separator: React.FC<SeparatorProps> = ({ leftText, rightText }) => {
           className={styles.image}
         />
       </div>
-      <p className={`${styles.text} ${styles.rightText}`}>{rightText}</p>
+      <motion.p
+        className={`${styles.text} ${styles.rightText}`}
+        initial={{ x: 80, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
+        {rightText}
+      </motion.p>
     </div>
   )
 }

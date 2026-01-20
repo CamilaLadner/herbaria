@@ -1,10 +1,22 @@
 'use client'
 
 import { useState, useCallback } from 'react'
+import { motion } from 'framer-motion'
 import styles from './page.module.css'
 import { plantasBase, Planta } from '../mockData/plantas'
 import PlantCard from '../components/layout/plantCard'
 import Filters from '../components/layout/filters'
+import Image from 'next/image'
+import Separator from '../components/layout/separator'
+
+const heroVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  },
+}
 
 const NuestrosProductos = () => {
   const [filteredPlantas, setFilteredPlantas] = useState<Planta[]>(plantasBase)
@@ -18,66 +30,59 @@ const NuestrosProductos = () => {
     setFilteredPlantas(plantas)
   }, [])
 
-  // Dividir las plantas en 3 grupos para las 3 filas
-  const plantasPorFila = Math.ceil(filteredPlantas.length / 3)
-  const fila1 = filteredPlantas.slice(0, plantasPorFila)
-  const fila2 = filteredPlantas.slice(plantasPorFila, plantasPorFila * 2)
-  const fila3 = filteredPlantas.slice(plantasPorFila * 2)
-
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Plantar un jardín es creer en el mañana</h1>
-      
-      <div className={styles.mainContent}>
-        <div className={styles.filtersRow}>
-          <Filters plantas={plantasBase} onFilterChange={handleFilterChange} />
+    <>
+      <motion.div
+        className={styles.hero}
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+          },
+        }}
+      >
+        <motion.h1 className={styles.title} variants={heroVariants}>
+          Plantar un jardín
+        </motion.h1>
+        <motion.div variants={heroVariants}>
+          <Image src="/ourProducts.png" alt="Nuestros Productos" width={400} height={600} className={styles.allPlantsImage} />
+        </motion.div>
+        <motion.h1 className={styles.title} variants={heroVariants}>
+          es creer en el mañana
+        </motion.h1>
+      </motion.div>
+
+      <div className={styles.container}>
+        <div className={styles.mainContent}>
+          <div className={styles.filtersRow}>
+            <Filters plantas={plantasBase} onFilterChange={handleFilterChange} />
+          </div>
+
+          <div className={styles.plantsSection}>
+            {filteredPlantas.length > 0 ? (
+              <div className={styles.plantsRow}>
+                {filteredPlantas.map((planta) => (
+                  <PlantCard
+                    key={planta.id}
+                    planta={planta}
+                    onAddToCart={handleAddToCart}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className={styles.noResults}>
+                <p>No se encontraron plantas con los filtros seleccionados.</p>
+              </div>
+            )}
+          </div>
         </div>
 
-        <div className={styles.plantsSection}>
-          {fila1.length > 0 && (
-            <div className={styles.plantsRow}>
-              {fila1.map((planta) => (
-                <PlantCard
-                  key={planta.id}
-                  planta={planta}
-                  onAddToCart={handleAddToCart}
-                />
-              ))}
-            </div>
-          )}
-
-          {fila2.length > 0 && (
-            <div className={styles.plantsRow}>
-              {fila2.map((planta) => (
-                <PlantCard
-                  key={planta.id}
-                  planta={planta}
-                  onAddToCart={handleAddToCart}
-                />
-              ))}
-            </div>
-          )}
-
-          {fila3.length > 0 && (
-            <div className={styles.plantsRow}>
-              {fila3.map((planta) => (
-                <PlantCard
-                  key={planta.id}
-                  planta={planta}
-                  onAddToCart={handleAddToCart}
-                />
-              ))}
-            </div>
-          )}
-
-          {filteredPlantas.length === 0 && (
-            <div className={styles.noResults}>
-              <p>No se encontraron plantas con los filtros seleccionados.</p>
-            </div>
-          )}
-        </div>
+        <Separator leftText="Mi hogar es donde" rightText="estén mis plantas" />
       </div>
-    </div>
+    </>
   )
 }
 

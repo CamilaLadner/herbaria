@@ -42,7 +42,7 @@
     font-size: 20px;
     font-weight: 600;
     margin: 0;
-    color: #2e6417;
+    color: rgb(7, 7, 7);
 }
 
 .descripcion {
@@ -50,7 +50,7 @@
     font-size: 14px;
     line-height: 1.5;
     margin: 0;
-    color: #2e6417;
+    color: rgb(7, 7, 7);;
     opacity: 0.8;
 }
 

@@ -1,52 +1,50 @@
 .filtersContainer {
-  background-color: var(--background);
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: fit-content;
-  position: sticky;
-  top: 20px;
-}
-
-/* Sombra para modo claro */
-:global(:root:not(.dark)) .filtersContainer {
-  filter: drop-shadow(0 4px 12px rgb(26, 48, 5));
-}
-
-/* Sombra para modo oscuro */
-:global(.dark) .filtersContainer {
-  filter: drop-shadow(0 4px 12px rgba(246, 233, 217, 0.3));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 0;
 }
 
 .filtersTitle {
   font-family: var(--font-clash-display);
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 600;
-  margin: 0 0 24px 0;
+  margin: 0;
   color: var(--foreground);
   text-align: center;
 }
 
-.sectionsContainer {
-  display: flex;
-  flex-direction: column;
+.filtersRow {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(160px, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .filterSection {
-  margin-bottom: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0;
+  min-width: 0;
 }
 
 .filterHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 4px;
   width: 100%;
   background: none;
-  border: none;
-  padding: 0;
+  padding: 4px 8px;
   cursor: pointer;
-  margin-bottom: 12px;
   transition: opacity 0.2s ease;
+  border: none;
+  border-radius: 0;
 }
 
 .filterHeader:hover {
@@ -55,7 +53,7 @@
 
 .filterLabel {
   font-family: var(--font-clash-display);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   margin: 0;
   color: var(--foreground);
@@ -69,112 +67,103 @@
 }
 
 .filterOptions {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 6px;
+  min-width: 100%;
+  max-height: 320px;
+  padding: 12px;
+  margin-top: 4px;
+  background-color: var(--background);
+  border: 2px solid rgba(46, 100, 23, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   animation: slideDown 0.3s ease;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @keyframes slideDown {
   from {
     opacity: 0;
-    max-height: 0;
+    transform: translateX(-50%) translateY(-8px);
   }
   to {
     opacity: 1;
-    max-height: 500px;
+    transform: translateX(-50%) translateY(0);
   }
 }
 
 .filterButton {
-  font-family: var(--font-clash-display);
   font-size: 14px;
+  font-family: var(--font-clash-display);
   padding: 10px 16px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: none;
   border-radius: 8px;
   background-color: transparent;
   color: var(--foreground);
   cursor: pointer;
   transition: all 0.3s ease;
-  text-align: left;
+  text-align: center;
+  width: 100%;
 }
 
 .filterButton:hover {
-  border-color: #2e6417;
-  background-color: rgba(46, 100, 23, 0.05);
+  background-color: rgba(46, 100, 23, 0.08);
 }
 
 .filterButton.active {
   background-color: #2e6417;
   color: var(--background);
-  border-color: #2e6417;
-}
-
-.clearButton {
-  font-family: var(--font-clash-display);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 12px 24px;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  background-color: transparent;
-  color: var(--foreground);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-  margin-top: 8px;
-}
-
-.clearButton:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.3);
 }
 
 /* Modo oscuro */
-:global(.dark) .filterButton {
-  border-color: rgba(255, 255, 255, 0.2);
+:global(.dark) .filterOptions {
+  border-color: rgba(246, 219, 187, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 :global(.dark) .filterButton:hover {
-  border-color: rgb(246, 219, 187);
-  background-color: rgba(246, 219, 187, 0.1);
+  background-color: rgba(246, 219, 187, 0.15);
 }
 
 :global(.dark) .filterButton.active {
   background-color: rgb(246, 219, 187);
   color: var(--background);
-  border-color: rgb(246, 219, 187);
 }
 
-:global(.dark) .clearButton {
-  border-color: rgba(255, 255, 255, 0.2);
+/* Dos columnas cuando no caben los 7 en una fila */
+@media (max-width: 1200px) {
+  .filtersRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-:global(.dark) .clearButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Responsive */
+/* Responsive móvil */
 @media (max-width: 768px) {
   .filtersContainer {
-    position: static;
-    margin-bottom: 24px;
+    gap: 12px;
   }
 
-  .sectionsContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+  .filtersTitle {
+    font-size: 16px;
   }
 
-  .filterSection {
-    margin-bottom: 0;
+  .filtersRow {
+    gap: 12px;
   }
 
-  .filterOptions {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+  .filterHeader {
+    padding: 6px 10px;
+  }
+
+  .filterLabel {
+    font-size: 14px;
   }
 }

@@ -1,6 +1,9 @@
+'use client'
+
 import React from 'react'
 import styles from './index.module.css'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { BsTruck } from "react-icons/bs";
 
 
@@ -17,9 +20,12 @@ const propaganda = () => {
             </div>
             </div>
 
-
-
-            <Image src="/propaganda.png" alt="propaganda" width={300} height={480} />
+            <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            >
+                <Image src="/propaganda.png" alt="propaganda" width={300} height={480} />
+            </motion.div>
         </div>
     )
 }

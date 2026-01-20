@@ -1,0 +1,52 @@
+.container {
+    background-color: #2e6417;
+    color: var(--background);
+    font-size: 16px;
+    font-weight: 600;
+    height: 1.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+:global(.dark) .container {
+    background-color: var(--foreground);
+    color: var(--background);
+}
+
+.track {
+    display: inline-flex;
+    align-items: center;
+    gap: 10rem;
+    animation: scroll 50s linear infinite;
+}
+
+.track:hover {
+    animation-play-state: paused;
+}
+
+.message {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.separator {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    flex-shrink: 0;
+}
+
+:global(.dark) .separator {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}

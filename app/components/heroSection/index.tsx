@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import styles from './index.module.css'
-import buttonStyles from '../layout/button/index.module.css'
+import Button from '../layout/button'
 
 const HeroSection = () => {
   const handleScrollToSection = () => {
@@ -24,10 +24,7 @@ const HeroSection = () => {
       <div className={styles.content}>
         <h2> Plantas pensadas para mejorar tus espacios según la vida que quieras crear</h2>
         <h3>Acompañamos decisiones cotidianas a través de las plantas </h3>
-
-        <button onClick={handleScrollToSection} className={buttonStyles.button}>
-          Elegí tu planta ideal
-        </button>
+        <Button text="Elegí tu planta ideal" onClick={handleScrollToSection} />
       </div>
     </div>
   )
