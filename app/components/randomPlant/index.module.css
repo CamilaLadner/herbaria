@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    height: 15rem;
+    width: 70%;
+    max-width: 50rem;
+    margin: 2rem auto;
+    background-image: url('/randomOption.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 10px;
+    gap: 1rem;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 2em;
+    margin: 0;
+}
+
+/* Modo oscuro - mantener texto verde */
+:global(.dark) .title {
+    color: #2e6417;
+}

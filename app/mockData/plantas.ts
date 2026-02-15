@@ -368,7 +368,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
     nombre: 'POR AMBIENTE',
     descripcion: 'Encuentra plantas ideales para cada rincón de tu hogar',
     imagen: '/porAmbiente.jpg',
-    imagenSlug: '/imagenSlug/porAmbienteSlug.jpg',
+    imagenSlug: '/imagenSlug/porAmbienteSlug1.png',
     alt: 'sección por ambiente',
     categorias: [
       {

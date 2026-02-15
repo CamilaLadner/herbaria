@@ -127,29 +127,29 @@ const Modal: React.FC<ModalProps> = ({ planta, isOpen, onClose, onComprar }) => 
           <div className={styles.detailItem}>
             <PiPlantLight className={styles.detailIcon} />
             <div className={styles.detailText}>
-              <span className={styles.detailLabel}>Tamaño</span>
-              <span className={styles.detailValue}>{planta.tamano}</span>
+              <h3 className={styles.detailLabel}>Tamaño</h3>
+              <h3 className={styles.detailValue}>{planta.tamano}</h3>
             </div>
           </div>
           <div className={styles.detailItem}>
             <GiPlantWatering className={styles.detailIcon} />
             <div className={styles.detailText}>
-              <span className={styles.detailLabel}>Cuidado</span>
-              <span className={styles.detailValue}>{planta.cuidado}</span>
+              <h3 className={styles.detailLabel}>Cuidado</h3>
+              <h3 className={styles.detailValue}>{planta.cuidado}</h3>
             </div>
           </div>
           <div className={styles.detailItem}>
             <PiSunDimThin className={styles.detailIcon} />
             <div className={styles.detailText}>
-              <span className={styles.detailLabel}>Luz</span>
-              <span className={styles.detailValue}>{planta.luz}</span>
+              <h3 className={styles.detailLabel}>Luz</h3>
+              <h3 className={styles.detailValue}>{planta.luz}</h3>
             </div>
           </div>
           <div className={styles.detailItem}>
             <LuDog className={styles.detailIcon} />
             <div className={styles.detailText}>
-              <span className={styles.detailLabel}>Pet Friendly</span>
-              <span className={styles.detailValue}>{planta.petFriendly ? 'Sí' : 'No'}</span>
+              <h3 className={styles.detailLabel}>Pet Friendly</h3>
+              <h3 className={styles.detailValue}>{planta.petFriendly ? 'Sí' : 'No'}</h3>
             </div>
           </div>
         </div>

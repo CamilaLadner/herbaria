@@ -206,12 +206,13 @@
 
 /* Barra de detalles compacta: 1 fila desktop, 2 filas mobile */
 .details {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.25rem 0.5rem;
-    padding: 0.5rem 1rem;
-    border-top: 0.0625rem solid rgba(0, 0, 0, 0.08);
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.08);
 }
 
 .detailItem {
@@ -238,7 +239,7 @@
 }
 
 .detailLabel {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: #1a1a1a;
 }
@@ -249,7 +250,7 @@
 }
 
 .detailValue {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: #5a5a5a;
     line-height: 1.25;
     overflow-wrap: break-word;
@@ -440,5 +441,12 @@
         max-width: 100%;
         min-width: 0;
         box-sizing: border-box;
+    }
+
+    .detailValue {
+        font-size: 0.7rem;
+    }
+    .detailLabel {
+        font-size: 0.7rem;
     }
 }

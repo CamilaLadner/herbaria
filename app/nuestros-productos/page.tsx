@@ -54,11 +54,11 @@ const NuestrosProductos = () => {
 
       <motion.div
         className={styles.hero}
-        initial={false}
+        initial="hidden"
         animate="visible"
         variants={{
+          hidden: {},
           visible: {
-            opacity: 1,
             transition: { staggerChildren: 0.2, delayChildren: 0.1 },
           },
         }}

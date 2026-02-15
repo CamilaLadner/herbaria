@@ -31,7 +31,7 @@
 .mainContent {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 1rem;
 }
 
 .filtersRow {
@@ -42,19 +42,18 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 32px;
 }
 
 .plantsRow {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
     align-items: stretch;
 }
 
 .noResults {
     text-align: center;
-    padding: 40px;
+    padding: 2.5rem;
     font-family: var(--font-clash-display);
     font-size: 18px;
     color: var(--foreground);
