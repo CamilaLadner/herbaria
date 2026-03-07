@@ -16,13 +16,16 @@ const HeroSection = () => {
 
   return (
     <div className={styles.background}>
-      <Image
-        src="/principalBanner.jpg"
-        alt="Living room with plants"
-        fill
-        priority
-        style={{ objectFit: 'cover' }}
-      />
+      <div className={styles.imageWrapper}>
+        <Image
+          src="/fondoVerde2.png"
+          alt="Plants"
+          width={1920}
+          height={700}
+          priority
+          style={{ objectFit: 'contain', objectPosition: 'left' }}
+        />
+      </div>
       <div className={styles.content}>
         <motion.h2
           initial={{ x: -100, opacity: 0 }}

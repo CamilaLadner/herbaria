@@ -745,7 +745,7 @@ export const seccionesPlantas: SeccionPlantas[] = [
     nombre: 'PET FRIENDLY',
     descripcion: 'Plantas seguras para convivir con tus mascotas',
     imagen: '/petFriendly1.jpg',
-    imagenSlug: '/imagenSlug/petFriendlySlug1.png',
+    imagenSlug: '/imagenSlug/petFriendlySlug2.jpeg',
     alt: 'sección pet friendly',
     categorias: [
       {

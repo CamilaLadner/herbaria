@@ -1,24 +1,40 @@
 .background {
     height: 80vh;
-    position: relative;
     background-color: var(--background);
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    padding-left: 0;
     overflow: hidden;
 }
-
 .content {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    margin-left: 35rem;
+    margin-top: 5rem;
+}
+
+.imageWrapper {
+    margin-left: 10rem;
+    flex: 1 1 auto;
+    min-width: 0;
     position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 50%;
-    height: 100%;
-    padding: 2.5rem;
+    justify-content: flex-start;
+}
+
+.imageWrapper :global(img) {
+    object-position: left;
 }
 
 :global(.dark) .content h2,
 :global(.dark) .content h3 {
-    color: rgb(26, 48, 5);
+    color: var(--foreground);
 }
 
 @media (max-width: 768px) {
