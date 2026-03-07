@@ -47,7 +47,8 @@
 .plantsRow {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+    row-gap: 1rem;
+    column-gap: 1rem;
     align-items: stretch;
 }
 
@@ -96,7 +97,8 @@
 
     .plantsRow {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        row-gap: 16px;
+        column-gap: 16px;
     }
 }
 
