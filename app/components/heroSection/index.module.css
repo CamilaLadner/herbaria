@@ -1,33 +1,29 @@
 .background {
-    position: relative;
     min-height: 80vh;
     background-color: var(--background);
     display: flex;
-    justify-content: start;
-    align-items: start;
-    padding-left: 0;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     overflow: hidden;
 }
 
 .content {
     display: flex;
-    position: absolute;
+    flex: 0 1 45%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem;
-    margin-left: 35rem;
-    margin-top: 5rem;
 }
 
 .imageWrapper {
-    margin-left: 10rem;
-    flex: 1 1 auto;
+    flex: 1 1 55%;
     min-width: 0;
-    position: relative;
+    max-width: 30%;
     display: flex;
     justify-content: flex-start;
+    margin-left: 5rem;
 }
 
 .imageWrapper :global(img) {
@@ -41,12 +37,13 @@
 
 @media (max-width: 1024px) {
     .content {
-        margin-left: 20rem;
-        margin-top: 3rem;
+        flex: 0 1 48%;
         padding: 1.5rem;
     }
     .imageWrapper {
-        margin-left: 5rem;
+        flex: 1 1 52%;
+        max-width: 52%;
+        margin-left: 2rem;
     }
 }
 
@@ -60,6 +57,7 @@
 
     .imageWrapper {
         margin-left: 55;
+        max-width: none;
         width: 100%;
         flex: none;
         display: flex;
