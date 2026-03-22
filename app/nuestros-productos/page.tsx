@@ -10,6 +10,7 @@ import Modal from '../components/layout/modal'
 import Image from 'next/image'
 import Separator from '../components/layout/separator'
 import Propaganda from '../components/propaganda'
+import { useCart } from '../context/CartContext'
 
 const heroVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -21,6 +22,7 @@ const heroVariants = {
 }
 
 const NuestrosProductos = () => {
+  const { addItem } = useCart()
   const [filteredPlantas, setFilteredPlantas] = useState<Planta[]>(plantasBase)
   const [plantaSeleccionada, setPlantaSeleccionada] = useState<Planta | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -35,8 +37,8 @@ const NuestrosProductos = () => {
     setPlantaSeleccionada(null)
   }
 
-  const handleComprar = () => {
-    // TODO: integrar con carrito
+  const handleComprar = (planta: Planta) => {
+    addItem(planta)
   }
 
   const handleFilterChange = useCallback((plantas: Planta[]) => {

@@ -12,7 +12,7 @@ interface ModalProps {
   planta: Planta | null
   isOpen: boolean
   onClose: () => void
-  onComprar?: () => void
+  onComprar?: (planta: Planta) => void
 }
 
 const formatPrice = (price: number): string => {
@@ -51,9 +51,7 @@ const Modal: React.FC<ModalProps> = ({ planta, isOpen, onClose, onComprar }) => 
   if (!isOpen || !planta) return null
 
   const handleComprar = () => {
-    if (onComprar) {
-      onComprar()
-    }
+    onComprar?.(planta)
     onClose()
   }
 

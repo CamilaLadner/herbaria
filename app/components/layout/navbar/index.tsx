@@ -6,11 +6,13 @@ import styles from './index.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import AnnouncementBar from '../announcementBar';
+import { useCart } from '../../../context/CartContext';
 
 
 const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
+  const { openCart, totalItems } = useCart();
   // Inicializar siempre con 'sunrise' para evitar error de hidratación
   const [iconState, setIconState] = useState<'sunrise' | 'sunset'>('sunrise');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,11 +82,30 @@ const Navbar = () => {
   };
 
   const CartIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
       <path d="M3 6h18" />
       <path d="M16 10a4 4 0 0 1-8 0" />
     </svg>
+  );
+
+  const CartButton = () => (
+    <button
+      type="button"
+      className={styles.cartBtn}
+      onClick={() => {
+        openCart();
+        setIsMenuOpen(false);
+      }}
+      aria-label={totalItems > 0 ? `Abrir carrito, ${totalItems} productos` : 'Abrir carrito'}
+    >
+      <CartIcon />
+      {totalItems > 0 ? (
+        <span className={styles.cartBadge}>
+          {totalItems > 99 ? '99+' : totalItems}
+        </span>
+      ) : null}
+    </button>
   );
 
   const renderIcon = () => {
@@ -141,7 +162,7 @@ const Navbar = () => {
         <div onClick={handleIconClick}>
           {renderIcon()}
         </div>
-        <CartIcon />
+        <CartButton />
       </div>
 
       <div className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ''}`}>
@@ -151,7 +172,7 @@ const Navbar = () => {
           <div onClick={handleIconClick}>
             {renderIcon()}
           </div>
-          <CartIcon />
+          <CartButton />
         </div>
       </div>
     </div>

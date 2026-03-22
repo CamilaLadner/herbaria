@@ -9,12 +9,14 @@ import PlantCard from '../components/layout/plantCard'
 import Modal from '../components/layout/modal'
 import Separator from '../components/layout/separator'
 import Propaganda from '../components/propaganda'
+import { useCart } from '../context/CartContext'
 
 interface SectionPageClientProps {
   seccion: SeccionPlantas
 }
 
 const SectionPageClient = ({ seccion }: SectionPageClientProps) => {
+  const { addItem } = useCart()
   const [plantaSeleccionada, setPlantaSeleccionada] = useState<Planta | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [indiceCategoria, setIndiceCategoria] = useState(0)
@@ -31,8 +33,8 @@ const SectionPageClient = ({ seccion }: SectionPageClientProps) => {
     setPlantaSeleccionada(null)
   }
 
-  const handleComprar = () => {
-    // TODO: integrar con carrito
+  const handleComprar = (planta: Planta) => {
+    addItem(planta)
   }
 
   return (

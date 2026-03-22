@@ -4,6 +4,8 @@ import "./globals.css";
 import ThemeScript from "./components/ThemeScript";
 import Navbar from "./components/layout/navbar";
 import Footer from "./components/layout/footer";
+import { CartProvider } from "./context/CartContext";
+import CartDrawer from "./components/layout/cartDrawer";
 
 // Configuración para ClashDisplay
 const clashDisplay = localFont({
@@ -34,9 +36,12 @@ export default function RootLayout({
         className={`${clashDisplay.variable} ${clashDisplay.className}`}
       >
         <ThemeScript />
-        <Navbar />
-        {children}
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );

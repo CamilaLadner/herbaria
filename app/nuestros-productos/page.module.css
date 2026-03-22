@@ -52,10 +52,10 @@
 
 .plantsRow {
     display: grid;
-    /* Misma densidad que el diseño original: 5 columnas; minmax(0,1fr) evita desbordes con el sidebar */
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    row-gap: 1rem;
-    column-gap: 1rem;
+    /* 4 columnas para que las tarjetas no se pisen junto al sidebar */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    row-gap: 1.75rem;
+    column-gap: 1.75rem;
     align-items: stretch;
 }
 

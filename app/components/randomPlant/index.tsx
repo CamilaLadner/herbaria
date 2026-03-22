@@ -5,8 +5,10 @@ import styles from './index.module.css'
 import Button from '../layout/button'
 import Modal from '../layout/modal'
 import { plantasBase, Planta } from '../../mockData/plantas'
+import { useCart } from '../../context/CartContext'
 
 const randomPlant = () => {
+  const { addItem } = useCart()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [plantaRecomendada, setPlantaRecomendada] = useState<Planta | null>(null)
 
@@ -26,9 +28,8 @@ const randomPlant = () => {
     setPlantaRecomendada(null)
   }
 
-  const handleComprar = () => {
-    // Lógica de compra - puedes implementar lo que necesites aquí
-    console.log('Comprar planta:', plantaRecomendada)
+  const handleComprar = (planta: Planta) => {
+    addItem(planta)
   }
 
   return (
