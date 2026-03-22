@@ -35,7 +35,7 @@ const PlantCard: React.FC<PlantCardProps> = ({ planta, onViewProduct }) => {
         />
       </div>
       <div className={styles.content}>
-        <h3 className={styles.nombreCotidiano}>{planta.nombreCotidiano}</h3>
+        <p className={styles.nombreCotidiano}>{planta.nombreCotidiano}</p>
 
         <div className={styles.priceContainer}>
           <span className={styles.price}>{formatPrice(planta.precio)}</span>

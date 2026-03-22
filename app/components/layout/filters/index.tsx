@@ -2,8 +2,6 @@
 
 import React from 'react'
 import { Planta, seccionesPlantas } from '../../../mockData/plantas'
-import { LuChevronDown, LuChevronRight } from 'react-icons/lu'
-import Button from '../button'
 import styles from './index.module.css'
 
 interface FiltersProps {
@@ -21,34 +19,6 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
     sensacion: '',
     ambiente: ''
   })
-
-  const [expandedSections, setExpandedSections] = React.useState({
-    tamano: false,
-    cuidado: false,
-    luz: false,
-    petFriendly: false,
-    uso: false,
-    sensacion: false,
-    ambiente: false
-  })
-
-  const openSection = (section: keyof typeof expandedSections) => {
-    setExpandedSections(prev =>
-      (Object.keys(prev) as (keyof typeof expandedSections)[]).reduce(
-        (acc, k) => ({ ...acc, [k]: k === section }),
-        {} as typeof expandedSections
-      )
-    )
-  }
-
-  const closeAllSections = () => {
-    setExpandedSections(prev =>
-      (Object.keys(prev) as (keyof typeof expandedSections)[]).reduce(
-        (acc, k) => ({ ...acc, [k]: false }),
-        {} as typeof expandedSections
-      )
-    )
-  }
 
   const filteredPlantas = React.useMemo(() => {
     let filtered = [...plantas]
@@ -123,224 +93,95 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
   const seccionAmbiente = seccionesPlantas.find(s => s.nombre === 'POR AMBIENTE')
   const ambientes = seccionAmbiente ? seccionAmbiente.categorias.map(c => c.nombre) : []
 
+  const totalActivos = Object.values(filters).filter(Boolean).length
+
+  const filterSections: Array<{
+    key: keyof typeof filters
+    label: string
+    options: string[]
+  }> = [
+    { key: 'tamano', label: 'Tamaño', options: tamanos },
+    { key: 'cuidado', label: 'Cuidado', options: cuidados },
+    { key: 'luz', label: 'Luz', options: luces },
+    { key: 'petFriendly', label: 'Pet Friendly', options: ['true', 'false'] },
+    { key: 'uso', label: 'Uso', options: usos },
+    { key: 'sensacion', label: 'Sensación', options: sensaciones },
+    { key: 'ambiente', label: 'Ambiente', options: ambientes }
+  ]
+
+  const getDisplayValue = (key: keyof typeof filters, value: string) => {
+    if (key === 'petFriendly') return value === 'true' ? 'Sí' : 'No'
+    return value
+  }
+
+  const handleClear = () => {
+    setFilters({
+      tamano: '',
+      cuidado: '',
+      luz: '',
+      petFriendly: '',
+      uso: '',
+      sensacion: '',
+      ambiente: ''
+    })
+  }
+
   return (
     <div className={styles.filtersContainer}>
-      <h3 className={styles.filtersTitle}>¿Cómo queres elegir?</h3>
+      <div className={styles.filtersHeader}>
+        <h3 className={styles.filtersTitle}>¿Cómo querés elegir?</h3>
+        <div className={styles.headerActions}>
+          <span className={styles.resultCount}>{filteredPlantas.length} resultados</span>
+          <button
+            type="button"
+            onClick={handleClear}
+            className={styles.clearButton}
+            disabled={totalActivos === 0}
+          >
+            Limpiar
+          </button>
+        </div>
+      </div>
 
-      <div className={styles.filtersRow}>
-      <div
-        className={styles.filterSection}
-        onMouseEnter={() => openSection('tamano')}
-        onMouseLeave={closeAllSections}
-      >
-        <button type="button" className={styles.filterHeader}>
-          <h3 className={styles.filterLabel}>Tamaño</h3>
-          {expandedSections.tamano ? (
-            <LuChevronDown className={styles.chevronIcon} />
-          ) : (
-            <LuChevronRight className={styles.chevronIcon} />
-          )}
-        </button>
-        {expandedSections.tamano && (
-          <div className={styles.filterOptions}>
-            {tamanos.map(tamano => (
+      {totalActivos > 0 && (
+        <div className={styles.activeFilters}>
+          {filterSections
+            .filter(section => filters[section.key])
+            .map(section => (
               <button
-                key={tamano}
-                className={`${styles.filterButton} ${filters.tamano === tamano ? styles.active : ''}`}
-                onClick={() => handleFilterChange('tamano', tamano)}
+                key={section.key}
+                type="button"
+                className={styles.activeChip}
+                onClick={() => handleFilterChange(section.key, filters[section.key])}
               >
-                {tamano}
+                {section.label}: {getDisplayValue(section.key, filters[section.key])} ×
               </button>
             ))}
+        </div>
+      )}
+
+      <div className={styles.filtersSections}>
+        {filterSections.map(section => (
+          <div key={section.key} className={styles.filterSection}>
+            <h4 className={styles.filterLabel}>{section.label}</h4>
+            <div className={styles.filterOptions}>
+              {section.options.map(option => {
+                const selected = filters[section.key] === option
+                return (
+                  <button
+                    type="button"
+                    key={`${section.key}-${option}`}
+                    className={`${styles.filterButton} ${selected ? styles.active : ''}`}
+                    onClick={() => handleFilterChange(section.key, option)}
+                  >
+                    {getDisplayValue(section.key, option)}
+                  </button>
+                )
+              })}
+            </div>
           </div>
-        )}
+        ))}
       </div>
-
-      <div
-        className={styles.filterSection}
-        onMouseEnter={() => openSection('cuidado')}
-        onMouseLeave={closeAllSections}
-      >
-        <button type="button" className={styles.filterHeader}>
-          <h3 className={styles.filterLabel}>Cuidado</h3>
-          {expandedSections.cuidado ? (
-            <LuChevronDown className={styles.chevronIcon} />
-          ) : (
-            <LuChevronRight className={styles.chevronIcon} />
-          )}
-        </button>
-        {expandedSections.cuidado && (
-          <div className={styles.filterOptions}>
-            {cuidados.map(cuidado => (
-              <button
-                key={cuidado}
-                className={`${styles.filterButton} ${filters.cuidado === cuidado ? styles.active : ''}`}
-                onClick={() => handleFilterChange('cuidado', cuidado)}
-              >
-                {cuidado}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div
-        className={styles.filterSection}
-        onMouseEnter={() => openSection('luz')}
-        onMouseLeave={closeAllSections}
-      >
-        <button type="button" className={styles.filterHeader}>
-          <h3 className={styles.filterLabel}>Luz</h3>
-          {expandedSections.luz ? (
-            <LuChevronDown className={styles.chevronIcon} />
-          ) : (
-            <LuChevronRight className={styles.chevronIcon} />
-          )}
-        </button>
-        {expandedSections.luz && (
-          <div className={styles.filterOptions}>
-            {luces.map(luz => (
-              <button
-                key={luz}
-                className={`${styles.filterButton} ${filters.luz === luz ? styles.active : ''}`}
-                onClick={() => handleFilterChange('luz', luz)}
-              >
-                {luz}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div
-        className={styles.filterSection}
-        onMouseEnter={() => openSection('petFriendly')}
-        onMouseLeave={closeAllSections}
-      >
-        <button type="button" className={styles.filterHeader}>
-          <h3 className={styles.filterLabel}>Pet Friendly</h3>
-          {expandedSections.petFriendly ? (
-            <LuChevronDown className={styles.chevronIcon} />
-          ) : (
-            <LuChevronRight className={styles.chevronIcon} />
-          )}
-        </button>
-        {expandedSections.petFriendly && (
-          <div className={styles.filterOptions}>
-            <button
-              className={`${styles.filterButton} ${filters.petFriendly === 'true' ? styles.active : ''}`}
-              onClick={() => handleFilterChange('petFriendly', 'true')}
-            >
-              Sí
-            </button>
-            <button
-              className={`${styles.filterButton} ${filters.petFriendly === 'false' ? styles.active : ''}`}
-              onClick={() => handleFilterChange('petFriendly', 'false')}
-            >
-              No
-            </button>
-          </div>
-        )}
-      </div>
-
-      <div
-        className={styles.filterSection}
-        onMouseEnter={() => openSection('uso')}
-        onMouseLeave={closeAllSections}
-      >
-        <button type="button" className={styles.filterHeader}>
-          <h3 className={styles.filterLabel}>Uso</h3>
-          {expandedSections.uso ? (
-            <LuChevronDown className={styles.chevronIcon} />
-          ) : (
-            <LuChevronRight className={styles.chevronIcon} />
-          )}
-        </button>
-        {expandedSections.uso && (
-          <div className={styles.filterOptions}>
-            {usos.map(uso => (
-              <button
-                key={uso}
-                className={`${styles.filterButton} ${filters.uso === uso ? styles.active : ''}`}
-                onClick={() => handleFilterChange('uso', uso)}
-              >
-                {uso}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div
-        className={styles.filterSection}
-        onMouseEnter={() => openSection('sensacion')}
-        onMouseLeave={closeAllSections}
-      >
-        <button type="button" className={styles.filterHeader}>
-          <h3 className={styles.filterLabel}>Sensación</h3>
-          {expandedSections.sensacion ? (
-            <LuChevronDown className={styles.chevronIcon} />
-          ) : (
-            <LuChevronRight className={styles.chevronIcon} />
-          )}
-        </button>
-        {expandedSections.sensacion && (
-          <div className={styles.filterOptions}>
-            {sensaciones.map(sensacion => (
-              <button
-                key={sensacion}
-                className={`${styles.filterButton} ${filters.sensacion === sensacion ? styles.active : ''}`}
-                onClick={() => handleFilterChange('sensacion', sensacion)}
-              >
-                {sensacion}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div
-        className={styles.filterSection}
-        onMouseEnter={() => openSection('ambiente')}
-        onMouseLeave={closeAllSections}
-      >
-        <button type="button" className={styles.filterHeader}>
-          <h3 className={styles.filterLabel}>Ambiente</h3>
-          {expandedSections.ambiente ? (
-            <LuChevronDown className={styles.chevronIcon} />
-          ) : (
-            <LuChevronRight className={styles.chevronIcon} />
-          )}
-        </button>
-        {expandedSections.ambiente && (
-          <div className={styles.filterOptions}>
-            {ambientes.map(ambiente => (
-              <button
-                key={ambiente}
-                className={`${styles.filterButton} ${filters.ambiente === ambiente ? styles.active : ''}`}
-                onClick={() => handleFilterChange('ambiente', ambiente)}
-              >
-                {ambiente}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      </div>
-
-      <Button
-        text="Limpiar filtros"
-        onClick={() => setFilters({
-          tamano: '',
-          cuidado: '',
-          luz: '',
-          petFriendly: '',
-          uso: '',
-          sensacion: '',
-          ambiente: ''
-        })}
-      />
     </div>
   )
 }

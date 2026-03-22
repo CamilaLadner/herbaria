@@ -96,7 +96,7 @@ const NuestrosProductos = () => {
                 <p>No se encontraron plantas con los filtros seleccionados.</p>
               </div>
             )}
-         <h3 className={styles.guideText}>Todos nuestros productos incluyen maceta y una guía de cuidado</h3> 
+         <h3 className={styles.guideText}>Todos nuestros productos incluyen maceta y una guía de cuidado</h3>
 
             <Propaganda />
 
