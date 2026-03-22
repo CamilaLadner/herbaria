@@ -1,51 +1,74 @@
 .hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 25rem;
   width: 100%;
-  text-align: center;
-  overflow: hidden;
+  background: var(--background);
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 9%, transparent);
 }
 
-.heroBanner {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.heroInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem 20px 2.25rem;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.heroAccent {
+  flex-shrink: 0;
+  width: 3px;
+  height: 4rem;
+  margin-top: 0.35rem;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--foreground) 22%, transparent);
+}
+
+.heroText {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.heroImageWrap {
+  position: relative;
+  flex-shrink: 0;
+  width: min(280px, 34vw);
+  aspect-ratio: 260 / 160;
+  border-radius: 8px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
 }
 
 .heroBannerImage {
   object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.heroContent {
-  position: relative;
-  z-index: 1;
-  padding: 2rem 24px;
-  max-width: 560px;
-  background: color-mix(in srgb, var(--background) 75%, transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 10px;
 }
 
 .title {
   font-family: var(--font-clash-display);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(1.65rem, 3.2vw, 2.15rem);
+  font-weight: 600;
   color: var(--foreground);
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.65rem;
+  line-height: 1.15;
 }
 
 .descripcion {
-  font-size: 1.1rem;
+  font-size: 0.98rem;
+  line-height: 1.5;
   color: var(--foreground);
-  opacity: 0.95;
+  opacity: 0.88;
   margin: 0;
+  max-width: 32rem;
 }
 
 .container {
@@ -60,19 +83,63 @@
   gap: 40px;
 }
 
-.categoriaSection {
+.tabsRow {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.35rem;
+  margin: 0 0 1.75rem;
+  padding: 0 0 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 14%);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
-.categoriaTitle {
-  font-family: var(--font-clash-display);
-  font-size: 2rem;
+.tabsRow::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tabsRow::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--foreground) 25%, transparent);
+  border-radius: 4px;
+}
+
+.tab {
+  flex: 0 0 auto;
+  padding: 0.55rem 1.1rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
   color: var(--foreground);
-  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 20%);
-  padding-bottom: 0.5rem;
-  text-align: center;
+  font-family: var(--font-clash-display);
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  font-weight: 500;
+  opacity: 0.55;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.tab:hover {
+  opacity: 0.85;
+}
+
+.tab:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--foreground) 40%, transparent);
+  outline-offset: 2px;
+}
+
+.tabActive {
+  opacity: 1;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--foreground) 9%, transparent);
+}
+
+.tabPanel {
+  min-height: 0;
 }
 
 .plantsRow {
@@ -96,17 +163,28 @@
 }
 
 @media (max-width: 768px) {
-  .hero {
-    min-height: 220px;
-    aspect-ratio: 16/9;
+  .heroInner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+    padding: 1.5rem 16px 1.75rem;
   }
 
-  .heroContent {
-    padding: 1.5rem 16px;
+  .heroImageWrap {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 10;
+    order: -1;
+  }
+
+  .heroAccent {
+    height: 3rem;
+    margin-top: 0.2rem;
   }
 
   .descripcion {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    max-width: none;
   }
 
   .container {
@@ -119,7 +197,14 @@
     column-gap: 16px;
   }
 
-  .categoriaTitle {
-    font-size: 2rem;
+  .tabsRow {
+    justify-content: flex-start;
+    margin-bottom: 1.25rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .tab {
+    padding: 0.5rem 0.9rem;
   }
 }

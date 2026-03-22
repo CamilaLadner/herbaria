@@ -5,6 +5,7 @@
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
+  width: 12rem;
   flex-direction: column;
   height: 100%;
   margin: 0 auto;
@@ -19,7 +20,7 @@
 .imageContainer {
   position: relative;
   width: 100%;
-  height: 20rem;
+  height: 10rem;
   overflow: hidden;
 }
 
@@ -37,7 +38,6 @@
 .nombreCotidiano {
   font-family: var(--font-clash-display);
   font-size: 1rem;
-  font-weight: 600;
   margin: 0.5rem;
   color: var(--foreground);
 }
@@ -50,7 +50,6 @@
 .price {
   font-family: var(--font-clash-display);
   font-size: 0.8rem;
-  font-weight: 600;
   color: var(--foreground);
 }
 

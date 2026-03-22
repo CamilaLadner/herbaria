@@ -17,6 +17,9 @@ interface SectionPageClientProps {
 const SectionPageClient = ({ seccion }: SectionPageClientProps) => {
   const [plantaSeleccionada, setPlantaSeleccionada] = useState<Planta | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [indiceCategoria, setIndiceCategoria] = useState(0)
+
+  const categoriaActual = seccion.categorias[indiceCategoria]
 
   const handleViewProduct = (planta: Planta) => {
     setPlantaSeleccionada(planta)
@@ -43,43 +46,84 @@ const SectionPageClient = ({ seccion }: SectionPageClientProps) => {
 
       <motion.div
         className={styles.hero}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.45 }}
       >
-        {(seccion.imagenSlug || seccion.imagen) && (
-          <div className={styles.heroBanner}>
-            <Image
-              src={seccion.imagenSlug || seccion.imagen}
-              alt={seccion.alt || seccion.nombre}
-              fill
-              sizes="100vw"
-              className={styles.heroBannerImage}
-            />
+        <div className={styles.heroInner}>
+          <div className={styles.heroCopy}>
+            <span className={styles.heroAccent} aria-hidden />
+            <div className={styles.heroText}>
+              <h1 className={styles.title}>{seccion.nombre}</h1>
+              <p className={styles.descripcion}>{seccion.descripcion}</p>
+            </div>
           </div>
-        )}
-        <div className={styles.heroContent}>
-          <h1 className={styles.title}>{seccion.nombre}</h1>
-          <p className={styles.descripcion}>{seccion.descripcion}</p>
+          {(seccion.imagenSlug || seccion.imagen) && (
+            <div className={styles.heroImageWrap}>
+              <Image
+                src={seccion.imagenSlug || seccion.imagen}
+                alt={seccion.alt || seccion.nombre}
+                fill
+                sizes="(max-width: 768px) 100vw, 280px"
+                className={styles.heroBannerImage}
+              />
+            </div>
+          )}
         </div>
       </motion.div>
 
       <div className={styles.container}>
         <div className={styles.mainContent}>
-          {seccion.categorias.map((categoria) => (
-            <section key={categoria.nombre} className={styles.categoriaSection}>
-              <h2 className={styles.categoriaTitle}>{categoria.nombre}</h2>
-              <div className={styles.plantsRow}>
-                {categoria.plantas.map((planta) => (
-                  <PlantCard
-                    key={planta.id}
-                    planta={planta}
-                    onViewProduct={handleViewProduct}
-                  />
+          {seccion.categorias.length > 0 && (
+            <>
+              <div
+                className={styles.tabsRow}
+                role="tablist"
+                aria-label="Categorías dentro de la sección"
+              >
+                {seccion.categorias.map((categoria, index) => (
+                  <button
+                    key={categoria.nombre}
+                    type="button"
+                    role="tab"
+                    id={`tab-categoria-${index}`}
+                    aria-selected={indiceCategoria === index}
+                    aria-controls="tabpanel-plantas-categoria"
+                    tabIndex={0}
+                    className={
+                      indiceCategoria === index ? `${styles.tab} ${styles.tabActive}` : styles.tab
+                    }
+                    onClick={() => setIndiceCategoria(index)}
+                  >
+                    {categoria.nombre}
+                  </button>
                 ))}
               </div>
-            </section>
-          ))}
+
+              {categoriaActual && (
+                <motion.div
+                  key={indiceCategoria}
+                  id="tabpanel-plantas-categoria"
+                  role="tabpanel"
+                  aria-labelledby={`tab-categoria-${indiceCategoria}`}
+                  className={styles.tabPanel}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.28 }}
+                >
+                  <div className={styles.plantsRow}>
+                    {categoriaActual.plantas.map((planta) => (
+                      <PlantCard
+                        key={planta.id}
+                        planta={planta}
+                        onViewProduct={handleViewProduct}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </>
+          )}
 
           <h3 className={styles.guideText}>
             Todos nuestros productos incluyen maceta y una guía de cuidado
