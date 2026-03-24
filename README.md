@@ -1,36 +1,239 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌿 Herbaria
 
-## Getting Started
+**Herbaria** es un e-commerce de plantas con foco en bienestar, conocimiento y uso consciente.
 
-First, run the development server:
+Comprar plantas no debería ser al azar ni confuso.
+Herbaria busca ayudar a las personas a encontrar la planta ideal según su espacio, su estilo de vida y el momento que estén atravesando, a través de una experiencia simple, clara y guiada.
+
+> **Elegí cómo querés sentirte. Nosotros te ayudamos a crecer.**
+
+---
+
+# 🚀 Demo
+
+🔗 https://viverodigital-herbaria.vercel.app/
+
+---
+
+# 🧠 Descripción del proyecto
+
+Herbaria es un proyecto frontend que simula una plataforma moderna de e-commerce de plantas, con fuerte enfoque en **UX, diseño visual y pensamiento de producto**.
+
+La idea principal es construir una landing limpia, estética y funcional que permita al usuario elegir plantas sin sentirse abrumado por información técnica o catálogos desordenados.
+
+En lugar de vender plantas de forma aleatoria, Herbaria propone una **selección guiada, clara y consciente**, priorizando la experiencia del usuario.
+
+---
+
+# 🎯 Objetivos del proyecto
+
+## 🌿 Objetivos comerciales
+
+* Facilitar la venta online de plantas
+* Reducir el abandono de compra
+* Diferenciarse de viveros tradicionales
+* Crear una experiencia de compra moderna y simple
+
+---
+
+## 🌱 Objetivos de experiencia de usuario (UX)
+
+* Evitar que el usuario se sienta perdido al elegir una planta
+* Guiar la decisión de compra
+* Simplificar el proceso de selección
+* Generar confianza a través de información clara
+
+---
+
+## 📚 Objetivos de contenido
+
+* Brindar información útil sobre plantas
+* Educar sin abrumar
+* Usar lenguaje accesible
+* Posicionar a Herbaria como una marca que acompaña
+
+---
+
+## 🎨 Objetivos de marca
+
+* Identidad joven y cercana
+* Estética natural y minimalista
+* Comunicación clara
+* Enfoque en bienestar cotidiano
+* Experiencia simple y confiable
+
+---
+
+# 👥 Público objetivo
+
+**Edad:** 18 a 35 años
+**Ubicación:** Principalmente urbana
+**Perfil:** Jóvenes adultos que buscan incorporar plantas a su vida cotidiana de forma simple, estética y funcional.
+
+### Características
+
+* Viven en departamentos o espacios reducidos
+* Consumen contenido digital
+* Valoran el diseño y la experiencia
+* No necesariamente tienen conocimientos sobre plantas
+* Buscan soluciones prácticas
+
+### Motivaciones
+
+* Mejorar su espacio
+* Incorporar verde al hogar
+* Comprar con sentido
+* Regalar algo significativo
+* Sentirse más cómodos en su entorno
+
+### Problemas que resuelve
+
+* No saber qué planta elegir
+* Miedo a que la planta se muera
+* Información confusa
+* Viveros tradicionales poco claros
+* Falta de orientación en tiendas online
+
+---
+
+# 🧩 Estrategia de producto
+
+Herbaria está pensada como una experiencia guiada, no como un catálogo tradicional.
+
+Se prioriza:
+
+* selección consciente
+* filtros claros
+* diseño minimalista
+* navegación simple
+* información accesible
+* confianza en la compra
+
+El objetivo es que elegir una planta sea **simple, intuitivo y agradable**.
+
+---
+
+# 🏪 Referencias de mercado
+
+Plataformas analizadas como inspiración:
+
+* https://plantasfaitful.com.ar
+* https://www.herbarium.ar
+
+Herbaria busca diferenciarse a través de:
+
+* claridad visual
+* enfoque UX
+* comunicación cercana
+* experiencia guiada
+
+---
+
+# 🛠 Tecnologías utilizadas
+
+* React
+* TypeScript
+* CSS
+* Responsive Design
+* Vercel
+
+---
+
+# ✨ Funcionalidades
+
+* Landing page moderna
+* Grid de productos
+* Secciones informativas
+* Métricas de confianza
+* Footer con navegación
+* Diseño responsive
+* Interfaz limpia y minimalista
+
+---
+
+# 📐 Proceso de desarrollo
+
+1. Definición de objetivos
+2. Brief del proyecto
+3. Estructura de navegación
+4. Wireframes
+5. Línea gráfica
+6. Propuesta de diseño
+7. Desarrollo frontend
+8. Pruebas y ajustes
+9. Demo final
+
+---
+
+# 📸 Capturas
+
+* Hero
+  <img width="1900" height="791" alt="image" src="https://github.com/user-attachments/assets/bcc0894b-836e-4a3e-90c9-623adc1e3606" />
+
+* Productos
+  <img width="1886" height="861" alt="image" src="https://github.com/user-attachments/assets/784f724d-1206-482d-91d0-754f1482a116" />
+  <img width="1887" height="860" alt="image" src="https://github.com/user-attachments/assets/317804c0-f519-4bc0-bb95-205fb26f261c" />
+
+  <img width="1906" height="860" alt="image" src="https://github.com/user-attachments/assets/904181c5-09c3-4ad6-bc27-1598ca557636" />
+
+---
+
+# ⚙️ Instalación
 
 ```bash
+git clone https://github.com/CamilaLadner/herbaria
+cd herbaria
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 📚 Objetivos de aprendizaje
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Aplicar UX en proyectos reales
+- Construir componentes escalables
+- Diseñar interfaces modernas
+- Practicar pensamiento de producto
+- Optimizar decisiones de diseño antes de comenzar el desarrollo
+- Crear por primera vez un brief y wireframes previos al código
+- Entender la importancia de planificar la experiencia antes de programar
 
-## Learn More
+  Diagrama de flujo
+  
+   <img width="1484" height="655" alt="image" src="https://github.com/user-attachments/assets/9fbd330e-6f9f-47f7-8aab-97b4383c1f24" />
 
-To learn more about Next.js, take a look at the following resources:
+  Wireframe
+  
+   <img width="543" height="522" alt="image" src="https://github.com/user-attachments/assets/a7207c09-8770-4433-bbfb-16971a0188cb" />
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 📁 Documentación
 
-## Deploy on Vercel
+El brief completo del proyecto se encuentra en:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+/docs/herbaria-brief.md
+/docs/diagramaDeFlujo.png
+/docs/wireframe.png
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+# 👩‍💻 Autora
+
+**Camila Ladner**
+Desarrolladora Full Stack especializada en Frontend y UX/UI
+
+🔗 Portfolio: https://camilaladner.vercel.app/
+
+🔗 LinkedIn: https://www.linkedin.com/in/camila-ladner/
+
+🔗 GitHub: https://github.com/CamilaLadner
+
+---
+
+# 🌿 Cierre
+
+> Herbaria no es solo un e-commerce de plantas, es un proyecto enfocado en experiencia de usuario, diseño consciente y bienestar cotidiano.
