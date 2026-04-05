@@ -20,8 +20,14 @@ const HowToChoose = () => {
   }
 
   return (
-    <div id="como-elegir" className={styles.container}>
-      <h1 className={styles.title}>¿Cómo querés elegir?</h1>
+    <section
+      id="como-elegir"
+      className={styles.container}
+      aria-labelledby="titulo-como-elegir"
+    >
+      <h2 id="titulo-como-elegir" className={styles.title}>
+        ¿Cómo querés elegir?
+      </h2>
       <div className={styles.cardsGrid}>
         {seccionesPlantas.map((seccion) => (
           <OptionCard
@@ -34,7 +40,7 @@ const HowToChoose = () => {
           />
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 

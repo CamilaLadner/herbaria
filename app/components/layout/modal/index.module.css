@@ -185,10 +185,6 @@
     font-size: 1.35rem;
 }
 
-.comprarButton:focus {
-    outline: none;
-}
-
 /* Imagen: absolute a la derecha para que el fondo transparente no ocupe espacio en el flujo */
 .imageContainer {
     position: absolute;

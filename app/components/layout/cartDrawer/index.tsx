@@ -70,7 +70,8 @@ const CartDrawer = () => {
       <div
         className={styles.overlay}
         onClick={closeCart}
-        aria-hidden
+        aria-hidden="true"
+        role="presentation"
       />
       <aside
         className={styles.panel}
@@ -124,7 +125,7 @@ const CartDrawer = () => {
                       <button
                         type="button"
                         className={styles.qtyBtn}
-                        aria-label="Quitar una unidad"
+                        aria-label={`Quitar una unidad de ${planta.nombreCotidiano}`}
                         onClick={() =>
                           setQuantity(planta.id, quantity - 1)
                         }
@@ -135,7 +136,7 @@ const CartDrawer = () => {
                       <button
                         type="button"
                         className={styles.qtyBtn}
-                        aria-label="Añadir una unidad"
+                        aria-label={`Añadir una unidad de ${planta.nombreCotidiano}`}
                         onClick={() =>
                           setQuantity(planta.id, quantity + 1)
                         }
@@ -146,6 +147,7 @@ const CartDrawer = () => {
                         type="button"
                         className={styles.removeBtn}
                         onClick={() => removeLine(planta.id)}
+                        aria-label={`Quitar ${planta.nombreCotidiano} del carrito`}
                       >
                         Quitar
                       </button>
@@ -176,10 +178,18 @@ const CartDrawer = () => {
         </footer>
 
         {showSuccess && (
-          <div className={styles.successOverlay}>
-            <div className={styles.successCard}>
-              <p className={styles.successTitle}>¡Listo!</p>
-              <p className={styles.successText}>
+          <div className={styles.successOverlay} role="presentation">
+            <div
+              className={styles.successCard}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="cart-success-title"
+              aria-describedby="cart-success-text"
+            >
+              <p id="cart-success-title" className={styles.successTitle}>
+                ¡Listo!
+              </p>
+              <p id="cart-success-text" className={styles.successText}>
                 Tu pedido fue registrado correctamente. Gracias por elegir
                 Herbaria.
               </p>

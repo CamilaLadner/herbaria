@@ -10,7 +10,7 @@ import RandomPlant from './components/randomPlant'
 
 const page = () => {
   return (
-    <div>
+    <>
       <HeroSection/>
       <Separator leftText="La tierra sonríe en flores" rightText="Y nosotros aprendemos a mirar" />
       <HowToChoose />
@@ -20,7 +20,7 @@ const page = () => {
       <Metric />
       <Comments />
       <Separator leftText="Si vas a dar amor" rightText="que tenga raíces" />
-    </div>
+    </>
   )
 }
 

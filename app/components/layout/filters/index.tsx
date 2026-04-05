@@ -127,16 +127,29 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
   }
 
   return (
-    <div className={styles.filtersContainer}>
+    <section
+      className={styles.filtersContainer}
+      aria-labelledby="filters-heading"
+    >
       <div className={styles.filtersHeader}>
-        <h3 className={styles.filtersTitle}>¿Cómo querés elegir?</h3>
+        <h2 id="filters-heading" className={styles.filtersTitle}>
+          ¿Cómo querés elegir?
+        </h2>
         <div className={styles.headerActions}>
-          <span className={styles.resultCount}>{filteredPlantas.length} resultados</span>
+          <span
+            id="filter-results-count"
+            className={styles.resultCount}
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {filteredPlantas.length} resultados
+          </span>
           <button
             type="button"
             onClick={handleClear}
             className={styles.clearButton}
             disabled={totalActivos === 0}
+            aria-label="Quitar todos los filtros"
           >
             Limpiar
           </button>
@@ -144,7 +157,7 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
       </div>
 
       {totalActivos > 0 && (
-        <div className={styles.activeFilters}>
+        <div className={styles.activeFilters} role="group" aria-label="Filtros activos">
           {filterSections
             .filter(section => filters[section.key])
             .map(section => (
@@ -153,6 +166,7 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
                 type="button"
                 className={styles.activeChip}
                 onClick={() => handleFilterChange(section.key, filters[section.key])}
+                aria-label={`Quitar filtro ${section.label}: ${getDisplayValue(section.key, filters[section.key])}`}
               >
                 {section.label}: {getDisplayValue(section.key, filters[section.key])} ×
               </button>
@@ -162,8 +176,8 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
 
       <div className={styles.filtersSections}>
         {filterSections.map(section => (
-          <div key={section.key} className={styles.filterSection}>
-            <h4 className={styles.filterLabel}>{section.label}</h4>
+          <fieldset key={section.key} className={styles.filterSection}>
+            <legend className={styles.filterLabel}>{section.label}</legend>
             <div className={styles.filterOptions}>
               {section.options.map(option => {
                 const selected = filters[section.key] === option
@@ -173,16 +187,17 @@ const Filters: React.FC<FiltersProps> = ({ plantas, onFilterChange }) => {
                     key={`${section.key}-${option}`}
                     className={`${styles.filterButton} ${selected ? styles.active : ''}`}
                     onClick={() => handleFilterChange(section.key, option)}
+                    aria-pressed={selected}
                   >
                     {getDisplayValue(section.key, option)}
                   </button>
                 )
               })}
             </div>
-          </div>
+          </fieldset>
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 

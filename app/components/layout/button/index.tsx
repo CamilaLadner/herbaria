@@ -7,9 +7,10 @@ interface ButtonProps {
   href?: string
   onClick?: () => void
   className?: string
+  ariaLabel?: string
 }
 
-const Button: React.FC<ButtonProps> = ({ text, href, onClick, className }) => {
+const Button: React.FC<ButtonProps> = ({ text, href, onClick, className, ariaLabel }) => {
   if (href) {
     return (
       <Link href={href} className={`${styles.button} ${className || ''}`}>
@@ -19,9 +20,11 @@ const Button: React.FC<ButtonProps> = ({ text, href, onClick, className }) => {
   }
 
   return (
-    <button 
-      onClick={onClick} 
+    <button
+      type="button"
+      onClick={onClick}
       className={`${styles.button} ${className || ''}`}
+      aria-label={ariaLabel}
     >
       {text}
     </button>

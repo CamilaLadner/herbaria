@@ -56,15 +56,32 @@ const Modal: React.FC<ModalProps> = ({ planta, isOpen, onClose, onComprar }) => 
   }
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose} aria-label="Cerrar modal">
+    <div
+      className={styles.overlay}
+      onClick={onClose}
+      role="presentation"
+    >
+      <div
+        className={styles.modal}
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-planta-titulo"
+      >
+        <button
+          type="button"
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label="Cerrar detalle de la planta"
+        >
           ×
         </button>
 
         <div className={styles.content}>
           <div className={styles.info}>
-            <h2 className={styles.nombreCotidiano}>{planta.nombreCotidiano.toUpperCase()}</h2>
+            <h2 id="modal-planta-titulo" className={styles.nombreCotidiano}>
+              {planta.nombreCotidiano.toUpperCase()}
+            </h2>
             <p className={styles.nombreProfesional}>{planta.nombreProfesional}</p>
             <p className={styles.descripcion}>{planta.descripcion}</p>
 
@@ -104,8 +121,13 @@ const Modal: React.FC<ModalProps> = ({ planta, isOpen, onClose, onComprar }) => 
             <div className={styles.precio}>{formatPrice(planta.precio)}</div>
 
             <div className={styles.buttonContainer}>
-              <button type="button" onClick={handleComprar} className={styles.comprarButton} aria-label="Añadir al carrito">
-                <LuShoppingCart className={styles.comprarButtonIcon} aria-hidden />
+              <button
+                type="button"
+                onClick={handleComprar}
+                className={styles.comprarButton}
+                aria-label={`Añadir ${planta.nombreCotidiano} al carrito`}
+              >
+                <LuShoppingCart className={styles.comprarButtonIcon} aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -123,28 +145,28 @@ const Modal: React.FC<ModalProps> = ({ planta, isOpen, onClose, onComprar }) => 
 
         <div className={styles.details}>
           <div className={styles.detailItem}>
-            <PiPlantLight className={styles.detailIcon} />
+            <PiPlantLight className={styles.detailIcon} aria-hidden="true" />
             <div className={styles.detailText}>
               <h3 className={styles.detailLabel}>Tamaño</h3>
               <h3 className={styles.detailValue}>{planta.tamano}</h3>
             </div>
           </div>
           <div className={styles.detailItem}>
-            <GiPlantWatering className={styles.detailIcon} />
+            <GiPlantWatering className={styles.detailIcon} aria-hidden="true" />
             <div className={styles.detailText}>
               <h3 className={styles.detailLabel}>Cuidado</h3>
               <h3 className={styles.detailValue}>{planta.cuidado}</h3>
             </div>
           </div>
           <div className={styles.detailItem}>
-            <PiSunDimThin className={styles.detailIcon} />
+            <PiSunDimThin className={styles.detailIcon} aria-hidden="true" />
             <div className={styles.detailText}>
               <h3 className={styles.detailLabel}>Luz</h3>
               <h3 className={styles.detailValue}>{planta.luz}</h3>
             </div>
           </div>
           <div className={styles.detailItem}>
-            <LuDog className={styles.detailIcon} />
+            <LuDog className={styles.detailIcon} aria-hidden="true" />
             <div className={styles.detailText}>
               <h3 className={styles.detailLabel}>Pet Friendly</h3>
               <h3 className={styles.detailValue}>{planta.petFriendly ? 'Sí' : 'No'}</h3>

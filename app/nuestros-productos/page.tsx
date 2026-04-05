@@ -54,7 +54,7 @@ const NuestrosProductos = () => {
         onComprar={handleComprar}
       />
 
-      <motion.div
+      <motion.section
         className={styles.hero}
         initial="hidden"
         animate="visible"
@@ -68,13 +68,19 @@ const NuestrosProductos = () => {
         <motion.h1 className={styles.title} variants={heroVariants}>
           Plantar un jardín
         </motion.h1>
-        <motion.div variants={heroVariants}>
-          <Image src="/OurProducts.png" alt="Nuestros Productos" width={400} height={600} className={styles.allPlantsImage} />
+        <motion.div variants={heroVariants} aria-hidden="true">
+          <Image
+            src="/OurProducts.png"
+            alt=""
+            width={400}
+            height={600}
+            className={styles.allPlantsImage}
+          />
         </motion.div>
         <motion.h1 className={styles.title} variants={heroVariants}>
           es creer en el mañana
         </motion.h1>
-      </motion.div>
+      </motion.section>
 
       <div className={styles.container}>
         <div className={styles.mainContent}>

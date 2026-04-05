@@ -24,20 +24,23 @@ const comments = [
 ]
 
 const Stars = () => (
-    <div className={styles.stars} aria-label="5 estrellas">
-        ★★★★★
+    <div className={styles.stars} role="img" aria-label="Calificación: 5 de 5 estrellas">
+        <span aria-hidden="true">★★★★★</span>
     </div>
 )
 
 const Comments = () => {
   return (
-    <div className={styles.commentsContainer}>
+    <section className={styles.commentsContainer} aria-labelledby="titulo-testimonios">
+        <h2 id="titulo-testimonios" className="visually-hidden">
+            Opiniones de clientas y clientes
+        </h2>
         {comments.map((comment) => (
-            <div className={styles.comment} key={comment.id}>
+            <article className={styles.comment} key={comment.id}>
                 <div className={styles.imageWrapper}>
                     <Image
                         src={comment.image}
-                        alt={comment.name}
+                        alt={`Foto de ${comment.name}`}
                         width={80}
                         height={80}
                         className={styles.commentImage}
@@ -45,12 +48,14 @@ const Comments = () => {
                 </div>
                 <div className={styles.content}>
                     <h3>{comment.name}</h3>
-                    <p>{comment.comment}</p>
+                    <blockquote className={styles.blockquote}>
+                        <p>{comment.comment}</p>
+                    </blockquote>
                     <Stars />
                 </div>
-            </div>
+            </article>
         ))}
-    </div>
+    </section>
   )
 }
 

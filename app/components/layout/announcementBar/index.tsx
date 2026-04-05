@@ -22,7 +22,7 @@ const messages: announcementBarProps[] = [
 
 const announcementBar = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} role="region" aria-label="Promociones y avisos">
       <div className={styles.track} aria-live="polite">
         {[...messages, ...messages].map((message, i) => (
           <React.Fragment key={`${message.messages}-${i}`}>

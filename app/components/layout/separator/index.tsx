@@ -12,7 +12,10 @@ interface SeparatorProps {
 
 const Separator: React.FC<SeparatorProps> = ({ leftText, rightText }) => {
   return (
-    <div className={styles.container}>
+    <section
+      className={styles.container}
+      aria-label="Frase decorativa"
+    >
       <motion.p
         className={`${styles.text} ${styles.leftText}`}
         initial={{ x: -80, opacity: 0 }}
@@ -25,10 +28,11 @@ const Separator: React.FC<SeparatorProps> = ({ leftText, rightText }) => {
       <div className={styles.imageWrapper}>
         <Image
           src="/HTu eleccion.png"
-          alt="Separator"
+          alt=""
           width={200}
           height={200}
           className={styles.image}
+          aria-hidden="true"
         />
       </div>
       <motion.p
@@ -40,7 +44,7 @@ const Separator: React.FC<SeparatorProps> = ({ leftText, rightText }) => {
       >
         {rightText}
       </motion.p>
-    </div>
+    </section>
   )
 }
 

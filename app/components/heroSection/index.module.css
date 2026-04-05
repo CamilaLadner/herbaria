@@ -30,9 +30,17 @@
     object-position: left;
 }
 
-:global(.dark) .content h2,
-:global(.dark) .content h3 {
+:global(.dark) .content h1,
+:global(.dark) .content .tagline {
     color: var(--foreground);
+}
+
+.tagline {
+    margin: 0;
+}
+
+.ctaWrap {
+    margin-top: 1.75rem;
 }
 
 @media (max-width: 1024px) {
@@ -83,14 +91,18 @@
         box-sizing: border-box;
     }
 
-    .content h2 {
+    .content h1 {
         font-size: clamp(1.35rem, 5vw, 1.75rem);
         line-height: 1.3;
     }
 
-    .content h3 {
+    .content .tagline {
         font-size: clamp(0.95rem, 3.5vw, 1.1rem);
         line-height: 1.4;
+    }
+
+    .ctaWrap {
+        margin-top: 1.5rem;
     }
 }
 
@@ -99,11 +111,11 @@
         padding: 1.5rem 1rem 2rem;
     }
 
-    .content h2 {
+    .content h1 {
         font-size: clamp(1.2rem, 5vw, 1.5rem);
     }
 
-    .content h3 {
+    .content .tagline {
         font-size: clamp(0.9rem, 3.5vw, 1rem);
     }
 }

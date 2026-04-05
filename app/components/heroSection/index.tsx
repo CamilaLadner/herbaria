@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import styles from './index.module.css'
 import Button from '../layout/button'
-import Metric from '../layout/metric'
 
 const HeroSection = () => {
   const handleScrollToSection = () => {
@@ -15,11 +14,14 @@ const HeroSection = () => {
   }
 
   return (
-    <div className={styles.background}>
-      <div className={styles.imageWrapper}>
+    <section
+      className={styles.background}
+      aria-labelledby="hero-titulo-principal"
+    >
+      <div className={styles.imageWrapper} aria-hidden="true">
         <Image
           src="/fondoVerde2.png"
-          alt="Plants"
+          alt=""
           width={1920}
           height={700}
           priority
@@ -27,29 +29,36 @@ const HeroSection = () => {
         />
       </div>
       <div className={styles.content}>
-        <motion.h2
+        <motion.h1
+          id="hero-titulo-principal"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           Plantas pensadas para mejorar tus espacios <br /> según la vida que quieras crear
-        </motion.h2>
-        <motion.h3
+        </motion.h1>
+        <motion.p
+          className={styles.tagline}
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
         >
           Acompañamos decisiones cotidianas a través de las plantas
-        </motion.h3>
+        </motion.p>
         <motion.div
+          className={styles.ctaWrap}
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
         >
-          <Button text="Elegí tu planta ideal" onClick={handleScrollToSection} />
+          <Button
+            text="Elegí tu planta ideal"
+            onClick={handleScrollToSection}
+            ariaLabel="Ir a la sección Cómo querés elegir"
+          />
         </motion.div>
       </div>
-    </div>
+    </section>
   )
 }
 

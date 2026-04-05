@@ -127,11 +127,6 @@
   opacity: 0.85;
 }
 
-.tab:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--foreground) 40%, transparent);
-  outline-offset: 2px;
-}
-
 .tabActive {
   opacity: 1;
   font-weight: 600;

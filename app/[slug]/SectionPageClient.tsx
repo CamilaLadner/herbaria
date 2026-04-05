@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import styles from './page.module.css'
@@ -37,6 +37,48 @@ const SectionPageClient = ({ seccion }: SectionPageClientProps) => {
     addItem(planta)
   }
 
+  const handleTabKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+      const count = seccion.categorias.length
+      if (count === 0) return
+
+      const last = count - 1
+      let nextIndex: number | null = null
+
+      switch (e.key) {
+        case 'ArrowRight':
+          e.preventDefault()
+          nextIndex = index >= last ? 0 : index + 1
+          break
+        case 'ArrowLeft':
+          e.preventDefault()
+          nextIndex = index <= 0 ? last : index - 1
+          break
+        case 'Home':
+          e.preventDefault()
+          nextIndex = 0
+          break
+        case 'End':
+          e.preventDefault()
+          nextIndex = last
+          break
+        default:
+          return
+      }
+
+      if (nextIndex === null) return
+
+      if (nextIndex !== index) {
+        setIndiceCategoria(nextIndex)
+      }
+
+      requestAnimationFrame(() => {
+        document.getElementById(`tab-categoria-${nextIndex}`)?.focus()
+      })
+    },
+    [seccion.categorias.length]
+  )
+
   return (
     <>
       <Modal
@@ -46,17 +88,20 @@ const SectionPageClient = ({ seccion }: SectionPageClientProps) => {
         onComprar={handleComprar}
       />
 
-      <motion.div
+      <motion.section
         className={styles.hero}
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
+        aria-labelledby="seccion-hero-titulo"
       >
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
             <span className={styles.heroAccent} aria-hidden />
             <div className={styles.heroText}>
-              <h1 className={styles.title}>{seccion.nombre}</h1>
+              <h1 id="seccion-hero-titulo" className={styles.title}>
+                {seccion.nombre}
+              </h1>
               <p className={styles.descripcion}>{seccion.descripcion}</p>
             </div>
           </div>
@@ -72,7 +117,7 @@ const SectionPageClient = ({ seccion }: SectionPageClientProps) => {
             </div>
           )}
         </div>
-      </motion.div>
+      </motion.section>
 
       <div className={styles.container}>
         <div className={styles.mainContent}>
@@ -91,11 +136,12 @@ const SectionPageClient = ({ seccion }: SectionPageClientProps) => {
                     id={`tab-categoria-${index}`}
                     aria-selected={indiceCategoria === index}
                     aria-controls="tabpanel-plantas-categoria"
-                    tabIndex={0}
+                    tabIndex={indiceCategoria === index ? 0 : -1}
                     className={
                       indiceCategoria === index ? `${styles.tab} ${styles.tabActive}` : styles.tab
                     }
                     onClick={() => setIndiceCategoria(index)}
+                    onKeyDown={(e) => handleTabKeyDown(e, index)}
                   >
                     {categoria.nombre}
                   </button>

@@ -34,10 +34,19 @@ const randomPlant = () => {
 
   return (
     <>
-      <div className={styles.container}>
-        <h1 className={styles.title}>¿No sabes cuál elegir? </h1>
-        <Button text="Te ayudamos a empezar" onClick={handleRecomendacionClick} />
-      </div>
+      <section
+        className={styles.container}
+        aria-labelledby="titulo-planta-aleatoria"
+      >
+        <h2 id="titulo-planta-aleatoria" className={styles.title}>
+          ¿No sabes cuál elegir?
+        </h2>
+        <Button
+          text="Te ayudamos a empezar"
+          onClick={handleRecomendacionClick}
+          ariaLabel="Obtener una recomendación de planta al azar"
+        />
+      </section>
 
       <Modal
         planta={plantaRecomendada}

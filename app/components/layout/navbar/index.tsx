@@ -82,7 +82,7 @@ const Navbar = () => {
   };
 
   const CartIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
       <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
       <path d="M3 6h18" />
       <path d="M16 10a4 4 0 0 1-8 0" />
@@ -101,7 +101,7 @@ const Navbar = () => {
     >
       <CartIcon />
       {totalItems > 0 ? (
-        <span className={styles.cartBadge}>
+        <span className={styles.cartBadge} aria-hidden="true">
           {totalItems > 99 ? '99+' : totalItems}
         </span>
       ) : null}
@@ -112,13 +112,13 @@ const Navbar = () => {
     switch (iconState) {
       case 'sunrise':
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
           </svg>
         );
       case 'sunset':
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
             <circle cx="12" cy="12" r="4" />
             <path d="M12 2v2" />
             <path d="M12 20v2" />
@@ -133,49 +133,77 @@ const Navbar = () => {
     }
   };
 
+  const themeLabel =
+    iconState === 'sunset' ? 'Activar modo claro' : 'Activar modo oscuro';
+  const themePressed = iconState === 'sunset';
+
   return (
     <>
       <AnnouncementBar />
-    <div className={styles.navbar}>
-      <Link href="/" className={styles.logo}>
+    <header className={styles.navbar}>
+      <Link href="/" className={styles.logo} aria-label="Herbaria, inicio">
         <Image
           src={iconState === 'sunset' ? "/logoDesktopDark.png" : "/logoNavBar.png"}
-          alt="logo"
+          alt=""
           width={100}
           height={100}
           className={styles.logoDesktop}
+          aria-hidden="true"
         />
-        <Image src="/logoMobile.png" alt="logo" className={styles.logoMobile} width={100} height={100} />
+        <Image src="/logoMobile.png" alt="" className={styles.logoMobile} width={100} height={100} aria-hidden="true" />
       </Link>
 
       <button
+        type="button"
         className={`${styles.hamburger} ${isMenuOpen ? styles.hamburgerOpen : ''}`}
         onClick={toggleMenu}
-        aria-label="Toggle menu"
+        aria-label={isMenuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
+        aria-expanded={isMenuOpen}
+        aria-controls="menu-principal-navigation"
       >
-        <span className={styles.hamburgerLine}></span>
-        <span className={styles.hamburgerLine}></span>
-        <span className={styles.hamburgerLine}></span>
+        <span className={styles.hamburgerLine} aria-hidden="true" />
+        <span className={styles.hamburgerLine} aria-hidden="true" />
+        <span className={styles.hamburgerLine} aria-hidden="true" />
       </button>
 
       <div className={styles.button}>
-        <div onClick={handleIconClick}>
+        <button
+          type="button"
+          onClick={handleIconClick}
+          className={styles.themeToggle}
+          aria-label={themeLabel}
+          aria-pressed={themePressed}
+        >
           {renderIcon()}
-        </div>
+        </button>
         <CartButton />
       </div>
 
-      <div className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ''}`}>
-        <button onClick={handleScrollToAbout} className={styles.menuLink}>Sobre nosotros</button>
-        <Link href="/nuestros-productos" onClick={() => setIsMenuOpen(false)}>Nuestros productos</Link>
+      <nav
+        id="menu-principal-navigation"
+        className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ''}`}
+        aria-label="Principal"
+      >
+        <button type="button" onClick={handleScrollToAbout} className={styles.menuLink}>
+          Sobre nosotros
+        </button>
+        <Link href="/nuestros-productos" onClick={() => setIsMenuOpen(false)}>
+          Nuestros productos
+        </Link>
         <div className={styles.menuButtons}>
-          <div onClick={handleIconClick}>
+          <button
+            type="button"
+            onClick={handleIconClick}
+            className={styles.themeToggle}
+            aria-label={themeLabel}
+            aria-pressed={themePressed}
+          >
             {renderIcon()}
-          </div>
+          </button>
           <CartButton />
         </div>
-      </div>
-    </div>
+      </nav>
+    </header>
     </>
   )
 }

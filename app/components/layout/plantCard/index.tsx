@@ -24,7 +24,12 @@ const PlantCard: React.FC<PlantCardProps> = ({ planta, onViewProduct }) => {
   }
 
   return (
-    <div className={styles.card} onClick={handleViewProduct} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && handleViewProduct()}>
+    <button
+      type="button"
+      className={styles.card}
+      onClick={handleViewProduct}
+      aria-label={`Ver detalles de ${planta.nombreCotidiano}, precio ${formatPrice(planta.precio)}`}
+    >
       <div className={styles.imageContainer}>
         <Image
           src={planta.imagen}
@@ -43,7 +48,7 @@ const PlantCard: React.FC<PlantCardProps> = ({ planta, onViewProduct }) => {
 
         <p className={styles.descripcion}>{planta.descripcion}</p>
       </div>
-    </div>
+    </button>
   )
 }
 

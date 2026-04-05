@@ -25,7 +25,7 @@ interface MetricProps {
 
 const index = ({ variant }: MetricProps) => {
   return (
-    <div className={styles.container}>
+    <section className={styles.container} aria-label="Cifras del proyecto">
         <div className={`${styles.metrics} ${variant === 'aside' ? styles.metricsColumn : ''}`}>
             {metric.map((item, i) => (
                 <motion.div
@@ -41,7 +41,7 @@ const index = ({ variant }: MetricProps) => {
                 </motion.div>
             ))}
         </div>
-    </div>
+    </section>
   )
 }
 

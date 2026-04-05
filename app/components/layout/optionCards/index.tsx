@@ -20,9 +20,11 @@ const OptionCard: React.FC<OptionCardProps> = ({
   onClick 
 }) => {
   return (
-    <div 
+    <button
+      type="button"
       className={`${styles.card} ${className || ''}`}
       onClick={onClick}
+      aria-label={`Explorar: ${titulo}. ${descripcion}`}
     >
       <div className={styles.imageContainer}>
         <Image
@@ -37,7 +39,7 @@ const OptionCard: React.FC<OptionCardProps> = ({
         <h3 className={styles.titulo}>{titulo}</h3>
         <p className={styles.descripcion}>{descripcion}</p>
       </div>
-    </div>
+    </button>
   )
 }
 

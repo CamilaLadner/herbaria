@@ -31,14 +31,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body
         className={`${clashDisplay.variable} ${clashDisplay.className}`}
       >
         <ThemeScript />
         <CartProvider>
+          <a href="#contenido-principal" className="skipLink">
+            Saltar al contenido principal
+          </a>
           <Navbar />
-          {children}
+          <main id="contenido-principal" tabIndex={-1}>
+            {children}
+          </main>
           <Footer />
           <CartDrawer />
         </CartProvider>

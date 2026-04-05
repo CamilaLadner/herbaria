@@ -15,10 +15,6 @@
     width: auto;
 }
 
-.button:focus {
-    outline: none;
-}
-
 .button:hover {
     transform: translateY(-2px);
     opacity: 0.9;
